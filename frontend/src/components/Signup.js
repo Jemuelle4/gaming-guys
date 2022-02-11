@@ -2,6 +2,8 @@ import React, { useRef } from 'react'
 import { Form, Button, Card } from 'react-bootstrap'
 
 export default function Signup() {
+  const nameRef = useRef()
+  const genderRef = useRef()
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
@@ -9,10 +11,24 @@ export default function Signup() {
     <>
         <Card>
             <Card.Body>
-                <h2 className="text-center mb-4">Sign Up</h2>
+                <h2 className="text-center mb-4">Account Information</h2>
                 <Form>
+                    <Form.Group id="Name">
+                        <Form.Label>First Name</Form.Label>
+                        <Form.Control type="name" ref={nameRef} required />
+                    </Form.Group>
+                    <Form.Group id="gender">
+                        <Form.Label>Gender</Form.Label>
+                        <Form.Select ref={genderRef} required>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Nonbinary</option>
+                            <option>Agender</option>
+                            <option>Prefer not to say</option>
+                        </Form.Select>
+                    </Form.Group>
                     <Form.Group id="email">
-                        <Form.Label>Email</Form.Label>
+                        <Form.Label>Email Address</Form.Label>
                         <Form.Control type="email" ref={emailRef} required />
                     </Form.Group>
                     <Form.Group id="password">
