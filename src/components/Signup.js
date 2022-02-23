@@ -1,35 +1,61 @@
-import React, { useRef } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import React, { useRef, useState } from 'react'
+import { Form, Button, Alert } from 'react-bootstrap'
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Signup() {
-  const firstNameRef = useRef()
-  const lastNameRef = useRef()
-  const genderRef = useRef()
+//   const firstNameRef = useRef()
+//   const lastNameRef = useRef()
+//   const genderRef = useRef()
   const emailRef = useRef()
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
+  const { signup, currentUser } = useAuth()
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
+    if(passwordRef.current.value !==
+    passwordConfirmRef.current.value){
+        return setError('Passwords do not match')
+    }
+
+    try {
+        setError('')
+        setLoading(true)
+        await signup(emailRef.currentValue, passwordRef.currentValue)
+    } catch(error) {
+        console.log(error)
+        setError('Failed to create an account')
+    }
+
+    setLoading(false)
+  }
   return (
     <>
                 <h1 className="text-center mb-4">Account Information</h1>
-                <Form>
-                    <Form.Group id="Name">
+                {currentUser && currentUser.email}
+                {error && <Alert variant="danger">{error}</Alert>}
+                <Form onSubmit={handleSubmit}>
+                    {/* <Form.Group id="Name">
                         <Form.Label>First Name</Form.Label>
-                        <Form.Control type="name" ref={firstNameRef} required />
+                        <Form.Control type="name" ref={firstNameRef} />
                     </Form.Group>
                     <Form.Group id="Name">
                         <Form.Label>Last Name</Form.Label>
-                        <Form.Control type="name" ref={lastNameRef} required />
+                        <Form.Control type="name" ref={lastNameRef}/>
                     </Form.Group>
                     <Form.Group id="gender">
                         <Form.Label>Gender</Form.Label>
-                        <Form.Select ref={genderRef} required>
+                        <Form.Select ref={genderRef} >
                             <option>Male</option>
                             <option>Female</option>
                             <option>Nonbinary</option>
                             <option>Agender</option>
                             <option>Prefer not to say</option>
                         </Form.Select>
-                    </Form.Group>
+                    </Form.Group> */}
                     <Form.Group id="email">
                         <Form.Label>Email Address</Form.Label>
                         <Form.Control type="email" ref={emailRef} required />
@@ -42,7 +68,9 @@ export default function Signup() {
                         <Form.Label>Password Confirmation</Form.Label>
                         <Form.Control type="password" ref={passwordConfirmRef} required />
                     </Form.Group>
-                    <Button className="w-100 mt-3" type="submit">Sign Up</Button>
+                    <Button disabled={loading} className="w-100 mt-3" type="submit">
+                        Sign Up
+                    </Button>
                 </Form>
         <div className="w-100 text-center mt-2">
             Already have an account? Log In
