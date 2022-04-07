@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+label, label span {
+  display: block;
+  margin: 6px 0;
+}
+input {
+  padding: 6px;
+  margin-bottom: 12px;
+}
+button {
+  width: 178px;
+  background: #26C1BA;
+  color: #fff;
+  border: 0;
+  padding: 6px 8px;
+}
