@@ -17,7 +17,7 @@ export default function Signup() {
       <h2>Account Information</h2>
       <form onSubmit={handleSubmit}>
         <label>
-          <h3>Email</h3>
+          <h3>Email Address</h3>
           <input
             required
             type="email"
