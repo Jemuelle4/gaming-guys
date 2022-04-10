@@ -1,11 +1,12 @@
-import { BrowserRouter, Switch, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
-import './App.css';
 import Navbar from './components/navbar'
 import Home from './pages/Home'
 import About from './pages/About'
-import Connections from "./pages/Connections";
+import Connections from "./pages/Connections"
+import InGameInfo from "./pages/InGameInfo"
+import Communication from './pages/Communication'
 
 function App() {
   return (
@@ -27,6 +28,12 @@ function App() {
             </Route>
             <Route path='/connections'>
               <Connections />
+            </Route>
+            <Route path='/ingame'>
+              <InGameInfo />
+            </Route>
+            <Route path='/communication'>
+              <Communication />
             </Route>
         </Switch>
       </BrowserRouter>

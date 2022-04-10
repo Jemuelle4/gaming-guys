@@ -6,11 +6,12 @@ import poster from '../poster.png'
 export default function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [displayName, setDisplayName] = useState('')
   const { error, signup } = useSignup()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    signup(email,password)
+    signup(email,password,displayName)
   }
   
   return (
@@ -21,6 +22,15 @@ export default function Signup() {
       <div className='login-container'>
         <h2>Account Information</h2>
         <form onSubmit={handleSubmit}>
+        <label>
+            <h3>Name</h3>
+            <input
+              required
+              type="name"
+              onChange={(e) => setDisplayName(e.target.value)}
+              value={displayName}
+            />
+          </label>
           <label>
             <h3>Email Address</h3>
             <input
@@ -40,7 +50,7 @@ export default function Signup() {
             />
           </label>
           <button>sign up</button>
-          <p>Already have an account? <Link to ="/">Log In</Link></p>
+          <p>Already have an account? <Link to ="/login">Log In</Link></p>
           {error && <p>{error}</p>}
         </form>
       </div>
