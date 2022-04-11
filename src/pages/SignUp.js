@@ -8,7 +8,7 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
   const { error, signup } = useSignup()
-  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     signup(email,password,displayName)
