@@ -2,7 +2,10 @@ import React from 'react';
 import HomepageFilter from '../components/HomepageFilter';
 import UserCard from '../components/UserCard'
 import { CardGroup, Row, Col} from 'react-bootstrap';
+import { useCollection } from '../hooks/useCollection'
+
 const Home = () =>{
+  const { documents: users } = useCollection('users')
   return (
     <div>
       <Row>
@@ -12,16 +15,7 @@ const Home = () =>{
         <Col className='col-9'>
           <CardGroup>
             <Row  xs={1} md={2} lg={3}>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
-              <Col><UserCard /></Col>
+              {users && <UserCard users={users}/>}
             </Row>
           </CardGroup>
         </Col>

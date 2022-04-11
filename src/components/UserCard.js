@@ -1,30 +1,36 @@
 import React from 'react'
-import { Card, Button } from 'react-bootstrap'
+import { Card, Button, Col } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
 
-const UserCard = () =>{
+
+const UserCard = ({ users }) =>{
   return (
-    <Card className="text-white d-flex m-3">
-      <Card.Img style={{ width: '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb6kqtXGN8hvJ9XSvgePJR7-EozxcV0EKprQ&usqp=CAU" alt="Card image" />
-      <Card.ImgOverlay>
-        <Button className="rounded-circle">
-          <AddFriend />
-        </Button>
-        <Card.Title>User Name</Card.Title>
-        <Card.Text>User Role</Card.Text>
-        <div className="w-25 h-25">
-          {getEmblem('Diamond')}
-        </div>
-        <Card.Text>User Rank</Card.Text>
-        <div className="w-15 h-15">
-          {getRoleIcon('Diamond', 'Mid')}
-        </div>
-        <div className="w-15 h-15">
-          {getRoleIcon('Diamond', 'Jungle')}
-        </div>
-        <Card.Text>Role1/Role2</Card.Text>
-      </Card.ImgOverlay>
-    </Card>
+    users.map(user => (
+      <Col>
+        <Card className="text-white d-flex m-3">
+          <Card.Img style={{ width: '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb6kqtXGN8hvJ9XSvgePJR7-EozxcV0EKprQ&usqp=CAU" alt="Card image" />
+          <Card.ImgOverlay>
+            <Button className="rounded-circle">
+              <AddFriend />
+            </Button>
+            <Card.Title>{user.first_name}</Card.Title>
+            <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+            <div className="w-25 h-25">
+              {getEmblem('Diamond')}
+            </div>
+            <Card.Text>{user.rank}</Card.Text>
+            <div className="w-15 h-15">
+              {getRoleIcon('Diamond', 'Mid')}
+            </div>
+            <div className="w-15 h-15">
+              {getRoleIcon('Diamond', 'Jungle')}
+            </div>
+            <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+          </Card.ImgOverlay>
+        </Card>
+      </Col>
+        
+    ))
   );
 }
 

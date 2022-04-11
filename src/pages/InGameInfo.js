@@ -1,17 +1,13 @@
-import { useState } from 'react'
-import {useSignup} from '../hooks/useSignup'
 import { Link } from "react-router-dom";
 import poster from '../poster.png'
 
 export default function InGameInfo() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const { error, signup } = useSignup()
 
   async function getChampionName() {
     try {
       let response = await fetch('http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion.json');
       let responseJson = await response.json();
+      console.log(responseJson)
       return responseJson.name;
      } catch(error) {
       console.error(error);
@@ -20,7 +16,6 @@ export default function InGameInfo() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    signup(email,password)
   }
   
   return (
@@ -31,13 +26,14 @@ export default function InGameInfo() {
       <div className='login-container'>
         <h2>In-Game Information</h2>
         <form onSubmit={handleSubmit}>
-            <label>
+            <label> Favorite Role
                 <input type="radio" value="Top"/>Top
                 <input type="radio" value="Top"/>Mid
                 <input type="radio" value="Top"/>Jungle
                 <input type="radio" value="Top"/>Bot
                 <input type="radio" value="Top"/>Support
             </label>
+            <div>{getChampionName}</div>
             <select>
                 <option value="Top">Top</option>
                 <option value="Mid">Mid</option>

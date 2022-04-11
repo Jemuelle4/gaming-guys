@@ -9,11 +9,10 @@ export const useSignup = () => {
     const { dispatch } = useAuthContext()
 
 
-    const signup = (email, password, displayName) => {
+    const signup = (email, password) => {
         setError(null)
         createUserWithEmailAndPassword(auth, email, password)
             .then((res) => {
-                res.user.updateProfile( { displayName})
                 dispatch({ type: 'LOGIN', payload: res.user})
                 console.log('user signed up:', res.user)
             })
