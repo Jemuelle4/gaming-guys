@@ -1,19 +1,18 @@
 import { useState } from 'react'
 import { useLogin } from '../hooks/useLogin'
-import { Link } from "react-router-dom";
-import { useLogout } from '../hooks/useLogout'
+import { Link, useHistory } from "react-router-dom";
 import poster from '../poster.png'
 
 export default function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const { error, login } = useLogin()
-
-  const { logout } = useLogout()
+  const history = useHistory()
   
   const handleSubmit = (e) => {
     e.preventDefault()
     login(email,password)
+    history.push('/')
   }
   
   return (
@@ -42,10 +41,9 @@ export default function Login() {
               value={password}
             />
           </label>
-          <Link to="/"><button>Log In</button></Link>
+          <button>Log In</button>
           {error && <p>{error}</p>}
         </form>
-        <button onClick={logout}>Log Out</button>
         <p>Don't have an account? <Link to ="/signup">Sign Up</Link></p>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import React from 'react';
-import HomepageFilter from '../components/HomepageFilter';
+import HomepageFilter from '../components/HomepageFilter'
 import UserCard from '../components/UserCard'
-import { CardGroup, Row, Col} from 'react-bootstrap';
+import { CardGroup, Row, Col} from 'react-bootstrap'
 import { useCollection } from '../hooks/useCollection'
 
 const Home = () =>{

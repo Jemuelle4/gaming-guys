@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {useSignup} from '../hooks/useSignup'
-import { Link, useHistory} from "react-router-dom";
+import { Link, Redirect} from "react-router-dom";
 import poster from '../poster.png'
 
 export default function Signup() {
@@ -8,12 +8,11 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
   const { error, signup } = useSignup()
-  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     signup(email,password,displayName)
-    history.push('/ingame')
+    {!error && <Redirect to="/communicaton"></Redirect>}
   }
   
   return (
