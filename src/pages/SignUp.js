@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {useSignup} from '../hooks/useSignup'
-import { Link } from "react-router-dom";
+import { Link, useHistory} from "react-router-dom";
 import poster from '../poster.png'
 
 export default function Signup() {
@@ -8,10 +8,12 @@ export default function Signup() {
   const [password, setPassword] = useState('')
   const [displayName, setDisplayName] = useState('')
   const { error, signup } = useSignup()
+  const history = useHistory()
 
   const handleSubmit = (e) => {
     e.preventDefault()
     signup(email,password,displayName)
+    history.push('/ingame')
   }
   
   return (
@@ -49,7 +51,7 @@ export default function Signup() {
               value={password}
             />
           </label>
-          <button>sign up</button>
+          <button type="submit">sign up</button>
           <p>Already have an account? <Link to ="/login">Log In</Link></p>
           {error && <p>{error}</p>}
         </form>

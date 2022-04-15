@@ -42,11 +42,11 @@ export default function Login() {
               value={password}
             />
           </label>
-          <button>log in</button>
+          <Link to="/"><button>Log In</button></Link>
           {error && <p>{error}</p>}
         </form>
-        <button onClick={logout}>log out</button>
-        <p>Don't have an account? <Link to ="/signup">Sign up</Link></p>
+        <button onClick={logout}>Log Out</button>
+        <p>Don't have an account? <Link to ="/signup">Sign Up</Link></p>
       </div>
     </div>
   )

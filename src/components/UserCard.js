@@ -13,7 +13,7 @@ const UserCard = ({ users }) =>{
             <Button className="rounded-circle">
               <AddFriend />
             </Button>
-            <Card.Title>{user.first_name}</Card.Title>
+            <Card.Title>{user.displayName}</Card.Title>
             <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
             <div className="w-25 h-25">
               {getEmblem('Diamond')}
