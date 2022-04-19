@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { useLogin } from '../hooks/useLogin'
 import { Link, useHistory } from "react-router-dom";
 import poster from '../poster.png'
+import "../css/styles.css";
+import "../css/responsive.css";
+
 
 export default function Login() {
   const [email, setEmail] = useState('')
@@ -16,32 +19,34 @@ export default function Login() {
   }
   
   return (
-    <div className='container'>
+    <div className='flex-container'>
       <div className='poster-container'>
         <img src={poster} alt="poster"></img>
       </div>
       <div className='login-container'>
-        <h2>Welcome</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            <h3>Email Address</h3>
+        <h1>Welcome</h1>
+        <form className="form-container" onSubmit={handleSubmit}>
+          <div className="form-margin">
+          <label> Email Address </label>
             <input
               required
               type="email"
               onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
-          </label>
-          <label>
-            <h3>Password</h3>
-            <input
-              required
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-          </label>
-          <button>Log In</button>
+          
+          </div>
+         <div className="form-margin">
+          <label> Password </label>
+          <input
+            required
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+         </div>
+         
+          <button className=" button button-primary form-margin">Log In</button>
           {error && <p>{error}</p>}
         </form>
         <p>Don't have an account? <Link to ="/signup">Sign Up</Link></p>
