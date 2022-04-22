@@ -1,7 +1,6 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
-import Navbar from './components/navbar'
 import Home from './pages/Home'
 import About from './pages/About'
 import Connections from "./pages/Connections"
@@ -15,7 +14,6 @@ function App() {
     <div className="App">
       {authIsReady && (
         <BrowserRouter>
-          {user && <Navbar />}
           <Switch>
               <Route exact path="/">
                 {!user && <Redirect to="/login"></Redirect>}

@@ -3,11 +3,13 @@ import HomepageFilter from '../components/HomepageFilter'
 import UserCard from '../components/UserCard'
 import { CardGroup, Row, Col} from 'react-bootstrap'
 import { useCollection } from '../hooks/useCollection'
+import Navbar from '../components/navbar'
 
 const Home = () =>{
   const { documents: users } = useCollection('users')
   return (
     <div>
+      <Navbar/>
       <Row>
         <Col className='col-3'>
           <HomepageFilter/>

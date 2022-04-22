@@ -14,7 +14,6 @@ export default function Signup() {
   const handleSubmit = (e) => {
     e.preventDefault()
     signup(email,password,displayName)
-    {!error && <Redirect to="/communicaton"></Redirect>}
   }
   
   return (

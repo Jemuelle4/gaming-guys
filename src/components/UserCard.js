@@ -13,23 +13,22 @@ const UserCard = ({ users }) =>{
             <Button className="rounded-circle">
               <AddFriend />
             </Button>
-            <Card.Title>{user.displayName}</Card.Title>
-            <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+            {user.displayName && <Card.Title>{user.displayName}</Card.Title>}
+            {user.fav_role && <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>}
             <div className="w-25 h-25">
               {getEmblem('Diamond')}
             </div>
-            <Card.Text>{user.rank}</Card.Text>
+            {user.rank && <Card.Text>{user.rank}</Card.Text>}
             <div className="w-15 h-15">
               {getRoleIcon('Diamond', 'Mid')}
             </div>
             <div className="w-15 h-15">
               {getRoleIcon('Diamond', 'Jungle')}
             </div>
-            <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+            {user.fav_role && <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>}
           </Card.ImgOverlay>
         </Card>
       </Col>
-        
     ))
   );
 }
