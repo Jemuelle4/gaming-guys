@@ -4,7 +4,7 @@ import UserCard from '../components/UserCard'
 import { useCollection } from '../hooks/useCollection'
 
 const state = {
-  rank: [],
+  rank: ['Bronze'],
   role: [],
   looking: []
 }
@@ -33,20 +33,22 @@ export function MapUsers() {
 }
 
 function filterUsers(users) {
-  let filteredUsers = []
-  if(state['rank'].length === 0 && state['role'].length === 0 /**&& state[looking].length === 0**/) {
-    return users
+  if(users){
+    let filteredUsers = []
+    if(state['rank'].length === 0 && state['role'].length === 0 /**&& state[looking].length === 0**/) {
+      return users
+    }
+    for(const user of users) {
+      if(state['role'].includes(user.fav_role[0] || state['role'].includes(user.fav_role[1]))) {
+        filteredUsers.push(user)
+      } else if(state['rank'].includes(user.rank)) {
+        filteredUsers.push(user)
+      } /**else if(state['looking'].includes(user.looking)) {
+        filteredUsers.push(user)
+      }**/
+    }
+    return filteredUsers
   }
-  for(const user of users) {
-    if(state['role'].includes(user.fav_role[0] || state['role'].includes(user.fav_role[1]))) {
-      filteredUsers.push(user)
-    } else if(state['rank'].includes(user.rank)) {
-      filteredUsers.push(user)
-    } /**else if(state['looking'].includes(user.looking)) {
-      filteredUsers.push(user)
-    }**/
-  }
-  return filteredUsers
 }
 
 const HomepageFilter = () =>{
