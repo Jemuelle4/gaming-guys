@@ -2,8 +2,7 @@ import { useState } from 'react'
 import {useSignup} from '../hooks/useSignup'
 import { Link, Redirect} from "react-router-dom";
 import poster from '../poster.png'
-import "../css/styles.css"
-import "../css/responsive.css"
+import "../css/login-creation.css"
 
 export default function Signup() {
   const [email, setEmail] = useState('')

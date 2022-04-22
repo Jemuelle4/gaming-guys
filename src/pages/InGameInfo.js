@@ -4,6 +4,7 @@ import { doc, updateDoc, setDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useEffect, useState } from "react";
+import "../css/login-creation.css";
 
 export default function InGameInfo() {
   const { ...state } = useAuthContext()
@@ -56,7 +57,7 @@ export default function InGameInfo() {
   }
 
   return (
-    <div className="container">
+    <div className="flex-container">
       <div className='poster-container'>
         <img src={poster} alt="poster"></img>
       </div>
