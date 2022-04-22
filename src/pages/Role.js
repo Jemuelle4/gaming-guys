@@ -1,11 +1,10 @@
 import { useHistory } from "react-router-dom";
-import poster from '../full_poster.png'
 import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useState } from "react";
 
-export default function InGameInfo() {
+export default function Role() {
   const { ...state } = useAuthContext()
   const [role, setRole] = useState();
   const history = useHistory()
