@@ -6,6 +6,7 @@ import About from './pages/About'
 import Connections from "./pages/Connections"
 import InGameInfo from "./pages/InGameInfo"
 import Communication from './pages/Communication'
+import Role from './pages/Role'
 import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
@@ -36,10 +37,16 @@ function App() {
                 {user && <Connections />}
               </Route>
               <Route path='/ingame'>
+                {!user && <Redirect to="/login"></Redirect>}
                 {user && <InGameInfo />}
               </Route>
               <Route path='/communication'>
-                <Communication />
+                {!user && <Redirect to="/login"></Redirect>}
+                {user && <Communication />}
+              </Route>
+              <Route path='/role'>
+                {!user && <Redirect to="/login"></Redirect>}
+                {user && <Role />}
               </Route>
           </Switch>
         </BrowserRouter>

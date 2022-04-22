@@ -14,7 +14,7 @@ const UserCard = ({ users }) =>{
               <AddFriend />
             </Button>
             {user.displayName && <Card.Title>{user.displayName}</Card.Title>}
-            {user.fav_role && <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>}
+            {user.role && <Card.Text>{user.role}</Card.Text>}
             <div className="w-25 h-25">
               {getEmblem('Diamond')}
             </div>
