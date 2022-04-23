@@ -1,55 +1,109 @@
 import React from 'react'
-import { Form, Row, Col, Button } from 'react-bootstrap'
+import { Form, Row, Col } from 'react-bootstrap'
 import UserCard from '../components/UserCard'
 import { useCollection } from '../hooks/useCollection'
 
-const state = {
-  rank: [],
-  role: [],
-  looking: []
-}
-const count = 0
-
-function changeFilter(type, value) {
-  if(state[type].includes(value)) {
-    state[type].splice(state[type].indexOf(value), 1)
-  } else {
-    state[type].push(value)
-  }
-  console.log(state)
-}
-
-export function MapUsers() {
+export function MapUsers(rank, favRole, role) {
   const { documents: users } = useCollection('users')
-  console.log(typeof(users))
-  console.log(users)
-  console.log(count + 1)
-  let filteredUsers = filterUsers(users)
-  if(filteredUsers){
-    return filteredUsers.map(user => (
-      <UserCard user={user} key={user.displayName}/>
-    ))
+  let filteredUsers = []
+  if(users) {
+    filteredUsers = filterUsers(users, rank, favRole, role)
   }
+  return filteredUsers.map(user => (
+    <UserCard user={user} key={user.displayName}/>
+  ))
 }
 
-function filterUsers(users) {
+function filterUsers(users, rank, favRole, role) {
   let filteredUsers = []
-  if(state['rank'].length === 0 && state['role'].length === 0 /**&& state[looking].length === 0**/) {
+  if(rank.length === 0 && favRole.length === 0 && role.length === 0) {
     return users
   }
-  for(const user of users) {
-    if(state['role'].includes(user.fav_role[0] || state['role'].includes(user.fav_role[1]))) {
-      filteredUsers.push(user)
-    } else if(state['rank'].includes(user.rank)) {
-      filteredUsers.push(user)
-    } /**else if(state['looking'].includes(user.looking)) {
-      filteredUsers.push(user)
-    }**/
+  if(favRole.length === 0 && role.length === 0) {
+    for(const user of users) {
+      if(rank.includes(user.rank)) {
+        filteredUsers.push(user)
+      }
+    }
+  } else if (rank.length === 0 && role.length === 0) {
+    for(const user of users) {
+      if(favRole.includes(user.fav_role[0]) || favRole.includes(user.fav_role[1])) {
+        filteredUsers.push(user)
+      }
+    }
+  } else if(rank.length === 0 && favRole.length === 0){
+    for(const user of users) {
+      if(role.includes(user.role)) {
+        filteredUsers.push(user)
+      }
+    }
+  } else if(rank.length !== 0) {
+    for(const user of users) {
+      if(rank.includes(user.rank)) {
+        filteredUsers.push(user)
+      }
+    }
+    if(favRole.length !== 0) {
+      let i = filteredUsers.length
+      while(i--) {
+        if(!(favRole.includes(filteredUsers[i].fav_role[0]) || favRole.includes(filteredUsers[i].fav_role[1]))) {
+          filteredUsers.splice(filteredUsers.indexOf(filteredUsers[i]), 1)
+        }
+      }
+    }
+    if(role.length !== 0) {
+      let i = filteredUsers.length
+      while(i--) {
+        if(!(role.includes(filteredUsers[i].role))) {
+          filteredUsers.splice(filteredUsers.indexOf(filteredUsers[i]), 1)
+        }
+      }
+    }
+  } else {
+    for(const user of users) {
+      if(favRole.includes(user.fav_role[0]) || favRole.includes(user.fav_role[1])) {
+        filteredUsers.push(user)
+      }
+    }
+    let i = filteredUsers.length
+    while(i--) {
+      if(!(role.includes(filteredUsers[i].role))) {
+        filteredUsers.splice(filteredUsers.indexOf(filteredUsers[i]), 1)
+      }
+    }
   }
   return filteredUsers
 }
 
-const HomepageFilter = () =>{
+const HomepageFilter = ({ rank, setRank, favRole, setFavRole, role, setRole}) =>{
+  function changeFilter(type, value) {
+    if(type === 'rank'){
+      if(rank.includes(value)) {
+        setRank(rank.filter(function(ranks) {
+          return ranks !== value
+        }))
+      } else {
+        setRank([...rank, value])
+      }
+    } else if(type === 'favRole') {
+      if(favRole.includes(value)) {
+        setFavRole(favRole.filter(function(favRoles) {
+          return favRoles !== value
+        }))
+      } else {
+        setFavRole([...favRole, value])
+      }
+    } else {
+      if(role.includes(value)) {
+        setRole(role.filter(function(roles) {
+          return roles !== value
+        }))
+      } else {
+        setRole([...role, value])
+      }
+    }
+  }
+
   return (
     <div className='sticky-top'>
       <h3>Filter by Rank</h3>
@@ -77,19 +131,18 @@ const HomepageFilter = () =>{
       </Form>
       <h3>Filter by Role</h3>
       <Form>
-        <Form.Check label='Top' onChange={() => changeFilter('role', 'Top')}/>
-        <Form.Check label='Mid' onChange={() => changeFilter('role', 'Mid')}/>
-        <Form.Check label='Bot' onChange={() => changeFilter('role', 'Bot')}/>
-        <Form.Check label='Jungle' onChange={() => changeFilter('role', 'Jungle')}/>
-        <Form.Check label='Support' onChange={() => changeFilter('role', 'Support')}/>
+        <Form.Check label='Top' onChange={() => changeFilter('favRole', 'Top')}/>
+        <Form.Check label='Mid' onChange={() => changeFilter('favRole', 'Mid')}/>
+        <Form.Check label='Bot' onChange={() => changeFilter('favRole', 'Bot')}/>
+        <Form.Check label='Jungle' onChange={() => changeFilter('favRole', 'Jungle')}/>
+        <Form.Check label='Support' onChange={() => changeFilter('favRole', 'Support')}/>
       </Form>
       <h3>Looking For</h3>
       <Form>
-        <Form.Check label='Learner' onChange={() => changeFilter('looking', 'Learner')}/>
-        <Form.Check label='Coach' onChange={() => changeFilter('looking', 'Coach')}/>
-        <Form.Check label='Teammate' onChange={() => changeFilter('looking', 'Teammate')}/>
+        <Form.Check label='Learner' onChange={() => changeFilter('role', 'Learner')}/>
+        <Form.Check label='Coach' onChange={() => changeFilter('role', 'Coach')}/>
+        <Form.Check label='Teammate' onChange={() => changeFilter('role', 'Teammate')}/>
       </Form>
-      <Button type='submit'>Update Filter</Button>
     </div>
   );
 }

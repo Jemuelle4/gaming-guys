@@ -6,7 +6,7 @@ const UserCard = ({ user }) =>{
   if(user){
   return (
     <Col className='m-5' style={{ width: '20rem', height: '20rem'}}>
-      <Card className='text-white btn' style={{ width: '20rem', height: '20rem', border:'none'}}>
+      <Card className='btn' style={{ width: '20rem', height: '20rem', border:'none'}}>
         <Card.Img style={{ width: '20rem', height: '20rem'}} src='https://s3.amazonaws.com/cms-assets.tutsplus.com/uploads/users/810/profiles/19338/profileImage/profile-square-extra-small.png' alt="Card image" />
         <Card.ImgOverlay>
           <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
@@ -17,7 +17,7 @@ const UserCard = ({ user }) =>{
               <Card.Title>{user.displayName}</Card.Title>
             </Col>
             <Col>
-            <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+            <Card.Text>{user.role}</Card.Text>
             </Col>
           </Row>
           <Row>
