@@ -1,44 +1,62 @@
 import React from 'react'
-import { Card, Button, Col } from 'react-bootstrap'
+import { Card, Button, Row, Col } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
 
-
-const UserCard = ({ users }) =>{
+const UserCard = ({ user }) =>{
+  if(user){
   return (
-    users.map(user => (
-      <Col>
-        <Card className="text-white d-flex m-3">
-          <Card.Img style={{ width: '100%' }} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQb6kqtXGN8hvJ9XSvgePJR7-EozxcV0EKprQ&usqp=CAU" alt="Card image" />
-          <Card.ImgOverlay>
-            <Button className="rounded-circle">
-              <AddFriend />
-            </Button>
-            {user.displayName && <Card.Title>{user.displayName}</Card.Title>}
-            {user.role && <Card.Text>{user.role}</Card.Text>}
-            <div className="w-25 h-25">
-              {getEmblem('Diamond')}
-            </div>
-            {user.rank && <Card.Text>{user.rank}</Card.Text>}
-            <div className="w-15 h-15">
-              {getRoleIcon('Diamond', 'Mid')}
-            </div>
-            <div className="w-15 h-15">
-              {getRoleIcon('Diamond', 'Jungle')}
-            </div>
-            {user.fav_role && <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>}
-          </Card.ImgOverlay>
-        </Card>
-      </Col>
-    ))
+    <Col className='m-5' style={{ width: '20rem', height: '20rem'}}>
+      <Card className='text-white btn' style={{ width: '20rem', height: '20rem', border:'none'}}>
+        <Card.Img style={{ width: '20rem', height: '20rem'}} src='https://s3.amazonaws.com/cms-assets.tutsplus.com/uploads/users/810/profiles/19338/profileImage/profile-square-extra-small.png' alt="Card image" />
+        <Card.ImgOverlay>
+          <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
+            <AddFriend/>
+          </Button>
+          <Row>
+            <Col>
+              <Card.Title>{user.displayName}</Card.Title>
+            </Col>
+            <Col>
+            <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={6} className='d-flex justify-content-center'>
+              {getEmblem(user.rank)}
+            </Col>
+            <Col sm={3} className='d-flex justify-content-center'>
+              {getRoleIcon(user.rank, user.fav_role[0])}
+            </Col>
+            <Col sm={3} className='d-flex justify-content-center'>
+              {getRoleIcon(user.rank, user.fav_role[1])}
+            </Col>
+          </Row>
+          <Row>
+            <Col sm={6} className='d-flex justify-content-center'>
+              <Card.Text>{user.rank}</Card.Text>
+            </Col>
+            <Col sm={6} className='d-flex justify-content-center'>
+              <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+            </Col>
+          </Row>
+        </Card.ImgOverlay>
+      </Card>
+    </Col>
   );
+  }
 }
 
+
+
 function getEmblem(rank) {
-  return <img className="img-fluid" src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + "Icon"}/>
+  return <img style={{ height:'5rem', width:'5rem'}} src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + 'Icon'}/>
 }
 
 function getRoleIcon(rank, role) {
-  return <img className="img-fluid" src={require('../imgs/ranked-positions/Position_' + rank +"-" + role + '.png')} alt={role + "Icon"}/>
+  if(rank==='Unranked') {
+    rank = 'Iron'
+  }
+  return <img style={{ height:'5rem', width:'5rem'}} src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/>
 }
 
 export default UserCard;
