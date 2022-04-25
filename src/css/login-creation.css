@@ -78,15 +78,15 @@ label {
   }
 
   div.poster-container{
-    display: block;
+    display: flex;
     flex:1;
+    max-height: 100vh;
   }
   
   div.poster-container img{
-    max-width:100%;
-    position: relative;
-    top: 30%;
-    transform: translateY(-30%);
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
   }
 
   
