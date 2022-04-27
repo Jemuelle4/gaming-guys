@@ -28,7 +28,7 @@ export default function Communication() {
        telegram: telegram,
        aboutYou: aboutYou
     })
-    history.push('/')
+    history.push('/role')
   }
   
   return (
