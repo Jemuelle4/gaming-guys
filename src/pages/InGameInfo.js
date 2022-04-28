@@ -64,45 +64,61 @@ export default function InGameInfo() {
       <div className='login-container'>
         <h2>In-Game Information</h2>
         <form onSubmit={handleSubmit}>
-            <p>Your Rank</p>
-            <select onChange={handleRank}>
-              <option disabled selected value> Select </option>
-              <option key="Unranked">Unranked</option>
-              <option key="Iron">Iron</option>
-              <option key="Bronze">Bronze</option>
-              <option key="Silver">Silver</option>
-              <option key="Gold">Gold</option>
-              <option key="Platinum">Platinum</option>
-              <option key="Diamond">Diamond</option>
-              <option key="Master">Master</option>
-              <option key="GrandMaster">GrandMaster</option>
-              <option key="Challenger">Challenger</option>
-            </select>
-            <p>Your Main Role</p>
-            <select onChange={handleFirstRole}>
-              <option disabled selected value> Select </option>
-              <option key="Top">Top</option>
-              <option key="Jungle">Jungle</option>
-              <option key="Mid">Mid</option>
-              <option key="Bot">Bot</option>
-              <option key="Support">Support</option>
-            </select>
-            <p>Your Secondary Role</p>
-            <select onChange={handleSecondRole}>
-              <option disabled selected value> Select </option>
-              <option key="Top">Top</option>
-              <option key="Jungle">Jungle</option>
-              <option key="Mid">Mid</option>
-              <option key="Bot">Bot</option>
-              <option key="Support">Support</option>
-            </select>
-            <p>Favorite Champ</p>
-            <select onChange={handleChamp}>
-              {champData.map((name) =>
-              <option key={name}>{name}</option>)}
-              <option disabled selected value> Select </option>
-            </select>
-            <button type="submit">Submit</button>
+
+          <div className="grid-container"> 
+         
+            <div>
+              <label>Your Main Role</label>
+              <select onChange={handleFirstRole}>
+                <option disabled selected value> Select </option>
+                <option key="Top">Top</option>
+                <option key="Jungle">Jungle</option>
+                <option key="Mid">Mid</option>
+                <option key="Bot">Bot</option>
+                <option key="Support">Support</option>
+              </select>
+            </div>
+            <div>
+              <label>Your Secondary Role</label>
+              <select onChange={handleSecondRole}>
+                <option disabled selected value> Select </option>
+                <option key="Top">Top</option>
+                <option key="Jungle">Jungle</option>
+                <option key="Mid">Mid</option>
+                <option key="Bot">Bot</option>
+                <option key="Support">Support</option>
+              </select>
+            </div>
+            <div>
+              <label>Your Rank</label>
+              <select onChange={handleRank}>
+                <option disabled selected value> Select </option>
+                <option key="Unranked">Unranked</option>
+                <option key="Iron">Iron</option>
+                <option key="Bronze">Bronze</option>
+                <option key="Silver">Silver</option>
+                <option key="Gold">Gold</option>
+                <option key="Platinum">Platinum</option>
+                <option key="Diamond">Diamond</option>
+                <option key="Master">Master</option>
+                <option key="GrandMaster">GrandMaster</option>
+                <option key="Challenger">Challenger</option>
+              </select>
+            </div> 
+            <div>
+              <label>Favorite Champion</label>
+              <select onChange={handleChamp}>
+                {champData.map((name) =>
+                <option key={name}>{name}</option>)}
+                <option disabled selected value> Select </option>
+              </select>
+            </div>
+            <div id="creation-button">
+              <button className="button button-primary form-margin" type="submit">Next</button>
+            </div>
+           </div>
+         
+          
         </form>
       </div>
     </div>

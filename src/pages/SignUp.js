@@ -54,7 +54,7 @@ export default function Signup() {
         </div> 
       
         <div className="form-margin">
-          <button className="button button-primary" type="submit">sign up</button>
+          <button className="button button-primary" type="submit">Sign Up</button>
         </div>
           
         <p>Already have an account? <Link to ="/login">Log In</Link></p>
