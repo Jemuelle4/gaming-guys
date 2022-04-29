@@ -32,12 +32,67 @@ div.form-container{
   justify-content: center;
 }
 
+/*Role Page*/
 div.role-container{
   display:flex;
   height: 100vh;
   width: 100vw;
   background-image: url('../full_poster.png');
   background-size: cover;
+  box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.674);
+  padding: 5%;
+}
+
+div.role-container h2{
+  color: white;
+  position: absolute;
+}
+
+div.role-button-container{
+  display:flex;
+}
+
+div.role-picture{
+  margin: auto;
+}
+
+div.role-button-container img{
+  flex:1;
+  background-color: #04AA6D;
+  color: white;
+  opacity: 0.8;
+  text-align: center;
+  display: inline-block;
+  width: 60vh;
+  height: 60vh;
+  border-radius: 50%;
+  cursor: pointer;  
+}
+button.role-button{
+  flex:1;
+  background-color: #04AA6D;
+  color: white;
+  opacity: 0.8;
+  text-align: center;
+  display: inline-block;
+  width: 60vh;
+  height: 60vh;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+button.coach{
+  background-color: #A34B70;
+}
+button.learner{
+  background-color: #26C1BA;
+}
+button.teammate{
+  background-color: #46474C;
+}
+
+button.role-submit{
+  display:block;
 }
 
 div.grid-container{
