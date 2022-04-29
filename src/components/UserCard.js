@@ -3,8 +3,9 @@ import { Card, Button, Row, Col } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
 import UserCardModal from './UserCardModal'
 
-const UserCard = ({ user }) =>{
+const UserCard = ({ user, userKey }) =>{
   const [modalShow, setModalShow] = useState(false);
+  console.log(userKey)
   if(user){
   return (
       <Col className='m-5' style={{ width: '20rem', height: '20rem'}}>

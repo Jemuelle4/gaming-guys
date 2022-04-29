@@ -10,7 +10,7 @@ export function MapUsers(rank, favRole, role) {
     filteredUsers = filterUsers(users, rank, favRole, role)
   }
   return filteredUsers.map(user => (
-    <UserCard user={user} key={user.displayName}/>
+    <UserCard user={user} userKey={user.id} key={user.id}/>
   ))
 }
 

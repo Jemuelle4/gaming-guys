@@ -1,14 +1,19 @@
-import React from 'react';
+import React from 'react'
+import { Card, CardGroup } from 'react-bootstrap'
 import Navbar from '../components/navbar'
 
-const Connections = () =>{
+const Connections = ({connections}) =>{
   return (
     <div>
       <Navbar/>
-      <h1>Connections</h1>
-      <div>
-        <h2>This is the connections</h2>
-      </div>
+      <CardGroup>
+        {connections.map((connection) => {
+          <Card>
+            <Card.Header>This will be the connection name</Card.Header>
+            <Card.Text>This would be rank/role</Card.Text>
+          </Card>
+        })}
+      </CardGroup>
     </div>
   );
 }
