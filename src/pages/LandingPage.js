@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import { Link, Redirect} from "react-router-dom";
 import {useSignup} from '../hooks/useSignup'
 import "../css/landing-page.css";
+import mockup from "../imgs/Mockup.png"
 
 const LandingPage = () =>{
   const { error, signup } = useSignup()
@@ -12,14 +13,17 @@ const LandingPage = () =>{
       <Navbar />
       <section className="hero">
         <div className="hero-title">
-          <div>
+          <div className="hero-container-details">
             <h1 className="hero-message">{heromessage}</h1>
-            <button className="button button-primary mt-5">Sign Up</button>
+            <button className="button button-primary">Sign Up</button>
             <p>Already have an account? <Link to ="/login">Log In</Link></p>
         {error && <p>{error}</p>}
           </div>
           
-          <p>image here</p>
+          <div className="hero-container-image">
+            <img src= {mockup} className="hero-image" />
+          </div>
+         
         </div> 
         
         
