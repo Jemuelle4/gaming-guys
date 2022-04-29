@@ -7,6 +7,7 @@ import Connections from "./pages/Connections"
 import InGameInfo from "./pages/InGameInfo"
 import Communication from './pages/Communication'
 import Role from './pages/Role'
+import LandingPage from './pages/LandingPage'
 import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
@@ -47,6 +48,10 @@ function App() {
               <Route path='/role'>
                 {!user && <Redirect to="/login"></Redirect>}
                 {user && <Role />}
+              </Route>
+              <Route path="/landingpage">
+                {!user && <LandingPage/>}
+                {user && <LandingPage/>}
               </Route>
           </Switch>
         </BrowserRouter>
