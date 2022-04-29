@@ -1,0 +1,55 @@
+/* mobile first design */
+body{
+  background: #46474C;
+  color: #fff;
+}
+
+.hero{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 75vh;
+  padding: 5%;
+  
+}
+
+.hero-title{
+  display: flex;
+  justify-content: space-around;
+}
+
+.hero-message{
+  font-size: 4rem;
+  white-space: pre-line;
+}
+
+.description-container{
+  width: 90vw;
+  margin: auto auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.description-items{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+}
+
+.button {
+  width: 300px;
+  height: 40px;
+  border: 0;
+  padding: 6px 8px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  
+}
+
+.button-primary {
+  background: #26C1BA;
+  color: #fff;
+}
