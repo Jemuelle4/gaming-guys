@@ -2,8 +2,21 @@ import React, { useState } from 'react'
 import { Card, Button, Row, Col } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
 import UserCardModal from './UserCardModal'
+import { doc, updateDoc, arrayUnion } from 'firebase/firestore'
+import { db } from '../firebase/config'
+import { useAuthContext } from "../hooks/useAuthContext"
+
 
 const UserCard = ({ user, userKey }) =>{
+  const { ...state} = useAuthContext()
+  const handleClick = (e) => {
+    e.preventDefault()
+    setModalShow(false)
+    const ref = doc(db, "users", state.user.uid)
+    updateDoc(ref,{
+      pending: arrayUnion(userKey)
+    })
+  }
   const [modalShow, setModalShow] = useState(false);
   console.log(userKey)
   if(user){
@@ -12,7 +25,7 @@ const UserCard = ({ user, userKey }) =>{
         <Card style={{ cursor:'pointer', width: '20rem', height: '20rem', border:'none'}} onClick={() => setModalShow(true)}>
           <Card.Img style={{ width: '20rem', height: '20rem'}} src='https://s3.amazonaws.com/cms-assets.tutsplus.com/uploads/users/810/profiles/19338/profileImage/profile-square-extra-small.png' alt="Card image" />
           <Card.ImgOverlay>
-            <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={() => setModalShow(false)}>
+            <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>
               <AddFriend/>
             </Button>
             <Row>
