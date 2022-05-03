@@ -14,11 +14,11 @@ const UserCard = ({ user, userKey }) =>{
     setModalShow(false)
     const ref1 = doc(db, "users", state.user.uid)
     updateDoc(ref1,{
-      pending: arrayUnion(userKey)
+      requestedTo: arrayUnion(userKey)
     })
     const ref2 = doc(db, "users", userKey)
     updateDoc(ref2, {
-      pending: arrayUnion(state.user.uid)
+      receivedBy: arrayUnion(state.user.uid)
     })
   }
   const [modalShow, setModalShow] = useState(false);
