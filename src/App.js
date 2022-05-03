@@ -18,7 +18,7 @@ function App() {
         <BrowserRouter>
           <Switch>
               <Route exact path="/">
-                {!user && <Redirect to="/login"></Redirect>}
+                {!user && <Redirect to="/landingpage"></Redirect>}
                 {user && <Home />}
               </Route>
               <Route path="/signup">
@@ -51,7 +51,7 @@ function App() {
               </Route>
               <Route path="/landingpage">
                 {!user && <LandingPage/>}
-                {user && <LandingPage/>}
+                {user && <Home/>}
               </Route>
           </Switch>
         </BrowserRouter>

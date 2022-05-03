@@ -10,12 +10,11 @@ const LandingPage = () =>{
   var heromessage = "Find Teammates. \n Improve Skills."
   return (
     <div>
-      <Navbar />
       <section className="hero">
         <div className="hero-title">
           <div className="hero-container-details">
             <h1 className="hero-message">{heromessage}</h1>
-            <button className="button button-primary">Sign Up</button>
+            <Link to ="/signup"><button className="button button-primary">Sign Up</button></Link>
             <p>Already have an account? <Link to ="/login">Log In</Link></p>
         {error && <p>{error}</p>}
           </div>

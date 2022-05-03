@@ -12,9 +12,13 @@ const UserCard = ({ user, userKey }) =>{
   const handleClick = (e) => {
     e.preventDefault()
     setModalShow(false)
-    const ref = doc(db, "users", state.user.uid)
-    updateDoc(ref,{
+    const ref1 = doc(db, "users", state.user.uid)
+    updateDoc(ref1,{
       pending: arrayUnion(userKey)
+    })
+    const ref2 = doc(db, "users", userKey)
+    updateDoc(ref2, {
+      pending: arrayUnion(state.user.uid)
     })
   }
   const [modalShow, setModalShow] = useState(false);
