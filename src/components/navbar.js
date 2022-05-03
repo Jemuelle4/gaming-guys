@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
 import { useLogout } from '../hooks/useLogout'
+import "../css/navbar.css";
 
 
 
@@ -10,7 +11,7 @@ export default function Navbar(){
   const { logout } = useLogout()
 
   return (
-    <nav className="navbar navbar-expand-sm bg-light sticky-top d-flex justify-content-between">
+    <nav className="navbar navbar-expand-sm bg-dark sticky-top d-flex justify-content-between">
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link className="nav-link" to="/">Home</Link>
