@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap'
+import { Navbar, Button } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
 import { useLogout } from '../hooks/useLogout'
 import "../css/navbar.css";
 
 
 
-export default function Navbar(){
+export default function Nav(){
   const { logout } = useLogout()
 
   return (
-    <nav className="navbar navbar-expand-sm bg-dark sticky-top d-flex justify-content-between">
+    <Navbar collapseOnSelect expand='md' className="navbar navbar-expand-sm bg-dark sticky-top d-flex justify-content-between">
+      <Navbar.Toggle color='white' aria-controls="responsive-navbar-nav" />
+      <Navbar.Collapse id="responsive-navbar-nav">
       <ul className="navbar-nav">
         <li className="nav-item">
           <Link className="nav-link" to="/">Home</Link>
@@ -38,6 +40,7 @@ export default function Navbar(){
           <Link className="nav-link" to="/communication">Communication</Link>
         </li> */}
       </ul>
+      </Navbar.Collapse>
       <ul className='navbar-nav'>
         <span className='my-2'>
           <h5>Hello User</h5>
@@ -48,6 +51,6 @@ export default function Navbar(){
             </Button>
           </li>
       </ul>
-    </nav>
+    </Navbar>
   );
 }

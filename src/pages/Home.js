@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import HomepageFilter from '../components/HomepageFilter'
 import { CardGroup, Row, Col} from 'react-bootstrap'
-import Navbar from '../components/navbar'
+import Nav from '../components/navbar'
 import { MapUsers } from '../components/HomepageFilter'
 
 const Home = () =>{
@@ -11,7 +11,7 @@ const Home = () =>{
 
   return (
     <div>
-      <Navbar/>
+      <Nav/>
       <Row>
         <Col className='col-3'>
           <HomepageFilter rank={rank} setRank={setRank} favRole={favRole} setFavRole={setFavRole} role={role} setRole={setRole} />
