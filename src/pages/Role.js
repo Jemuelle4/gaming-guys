@@ -3,6 +3,7 @@ import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useState, useRef, useEffect } from "react";
+import "../css/login-creation.css";
 
 export default function Role() {
   const { ...state } = useAuthContext()
@@ -66,11 +67,15 @@ export default function Role() {
 
   return (
     <div className="role-container">
+      <div className="role-header">
         <h2>You are a...</h2>
-        <form onSubmit={handleSubmit}>
+      </div>
+      
+      <div>
+      <form className="role-form" onSubmit={handleSubmit}>
             <div className="role-button-container">
 
-              <div className="coach-button-container">
+              <div className="button-container">
                 {preview && clicked['Coach']? (
                 <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
                 ) : (
@@ -81,7 +86,7 @@ export default function Role() {
                 onChange={handleChange}/>
               </div>
 
-              <div className="coach-button-container">
+              <div className="button-container">
                 {preview && clicked['Learner']? (
                   <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
                   ) : (
@@ -92,7 +97,7 @@ export default function Role() {
                 onChange={handleChange}/>
               </div>
 
-              <div className="coach-button-container">
+              <div className="button-container">
                 {preview && clicked['Teammate'] ? (
                   <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
                   ) : (
@@ -103,8 +108,13 @@ export default function Role() {
                 onChange={handleChange}/>
               </div>
             </div>
-            <button className="role-submit" type="submit">next</button>
+            <div id="creation-button" className="mt-5">
+              <button className="role-submit button button-primary" type="submit">next</button>
+            </div>
+           
         </form>
+      </div>
+        
     </div>
   )
 }
