@@ -30,23 +30,23 @@ function App() {
                 {!user && <Login />}
               </Route>
               <Route path='/about'>
-                {!user && <Redirect to="/login"></Redirect>}
+                {!user && <Redirect to="/landingpage"></Redirect>}
                 {user && <About />}
               </Route>
               <Route path='/connections'>
-                {!user && <Redirect to="/login"></Redirect>}
+                {!user && <Redirect to="/landingpage"></Redirect>}
                 {user && <Connections />}
               </Route>
               <Route path='/ingame'>
-                {!user && <Redirect to="/login"></Redirect>}
+                {!user && <Redirect to="/landingpage"></Redirect>}
                 {user && <InGameInfo />}
               </Route>
               <Route path='/communication'>
-                {!user && <Redirect to="/login"></Redirect>}
+                {!user && <Redirect to="/landingpage"></Redirect>}
                 {user && <Communication />}
               </Route>
               <Route path='/role'>
-                {!user && <Redirect to="/login"></Redirect>}
+                {!user && <Redirect to="/landingpage"></Redirect>}
                 {user && <Role />}
               </Route>
               <Route path="/landingpage">

@@ -1,8 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { doc, updateDoc } from 'firebase/firestore'
-import { db } from '../firebase/config'
+import { db, storage } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useState, useRef, useEffect } from "react";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export default function Role() {
   const { ...state } = useAuthContext()
@@ -12,6 +13,7 @@ export default function Role() {
   const [preview, setPreview] = useState();
   const [clicked, setClicked] = useState({Coach: false, Learner: false, Teammate: false});
   
+
   useEffect(() => {
     if (image) {
       const reader = new FileReader();
@@ -56,13 +58,29 @@ export default function Role() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const ref = doc(db, "users", state.user.uid)
-    updateDoc(ref,{
-       role: role
+    const userRef = doc(db, "users", state.user.uid)
+    const fileRef = ref(storage, state.user.uid + '.png')
+    uploadBytes(fileRef, image)
+    getDownloadURL(fileRef).then(url =>{
+      updateDoc(userRef,{
+        role: role,
+        imgSrc: url
+     })
+    }).catch(function(e){
+      console.log(e.message)
     })
     console.log(image, preview)
-    //history.push('/')
+    history.push('/')
   }
+
+  // let imgSrc = getDownloadURL(ref(storage, userKey + '.png'))
+  // .then((url) =>{
+  //   imgSrc = url
+  //   console.log(imgSrc)
+  // }).catch(function(e){
+  //   console.log(e.message)
+  //   imgSrc = 'https://s3.amazonaws.com/cms-assets.tutsplus.com/uploads/users/810/profiles/19338/profileImage/profile-square-extra-small.png'
+  // })
 
   return (
     <div className="role-container">

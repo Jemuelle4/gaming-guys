@@ -5,7 +5,7 @@ import UserCardModal from './UserCardModal'
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
-
+import poster from '../poster.png'
 
 const UserCard = ({ user, userKey }) =>{
   const { ...state} = useAuthContext()
@@ -21,12 +21,14 @@ const UserCard = ({ user, userKey }) =>{
       receivedBy: arrayUnion(state.user.uid)
     })
   }
+
+
   const [modalShow, setModalShow] = useState(false);
   if(user){
   return (
       <Col className='m-5' style={{ width: '20rem', height: '20rem'}}>
         <Card style={{ cursor:'pointer', width: '20rem', height: '20rem', border:'none'}} onClick={() => setModalShow(true)}>
-          <Card.Img style={{ width: '20rem', height: '20rem'}} src='https://s3.amazonaws.com/cms-assets.tutsplus.com/uploads/users/810/profiles/19338/profileImage/profile-square-extra-small.png' alt="Card image" />
+          <Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
           <Card.ImgOverlay>
             <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>
               <AddFriend/>
