@@ -1,7 +1,7 @@
 /* mobile first design */
 body{
-  background: #46474C;
-  color: #fff;
+  background: #46474C !important;
+  color: #fff !important;
 }
 
 .hero{
