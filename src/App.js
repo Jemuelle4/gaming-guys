@@ -19,7 +19,7 @@ function App() {
           <Switch>
               <Route exact path="/">
                 {!user && <Redirect to="/landingpage"></Redirect>}
-                {user && <Home />}
+                {user && <Home uid={user.uid}/>}
               </Route>
               <Route path="/signup">
                 {user && <Redirect to="/ingame"></Redirect>}
@@ -35,7 +35,7 @@ function App() {
               </Route>
               <Route path='/connections'>
                 {!user && <Redirect to="/landingpage"></Redirect>}
-                {user && <Connections />}
+                {user && <Connections uid={user.uid}/>}
               </Route>
               <Route path='/ingame'>
                 {!user && <Redirect to="/landingpage"></Redirect>}
