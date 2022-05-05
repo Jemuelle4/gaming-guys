@@ -19,7 +19,7 @@ function App() {
           <Switch>
               <Route exact path="/">
                 {!user && <Redirect to="/landingpage"></Redirect>}
-                {user && <Home uid={user.uid}/>}
+                {user && <Home/>}
               </Route>
               <Route path="/signup">
                 {user && <Redirect to="/ingame"></Redirect>}

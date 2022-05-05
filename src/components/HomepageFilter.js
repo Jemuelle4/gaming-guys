@@ -3,23 +3,19 @@ import { Form, Row, Col } from 'react-bootstrap'
 import UserCard from '../components/UserCard'
 import { useCollection } from '../hooks/useCollection'
 
-export function MapUsers(rank, favRole, role, uid) {
+export function MapUsers(rank, favRole, role) {
   const { documents: users } = useCollection('users')
   let filteredUsers = []
   if(users) {
-    const currentUser = users.find(user => user.id === uid)
-    filteredUsers = filterUsers(users, rank, favRole, role, currentUser)
+    filteredUsers = filterUsers(users, rank, favRole, role)
   }
   return filteredUsers.map(user => (
     <UserCard user={user} userKey={user.id} key={user.id}/>
   ))
 }
 
-function filterUsers(users, rank, favRole, role, currentUser) {
+function filterUsers(users, rank, favRole, role) {
   let filteredUsers = []
-  console.log(users)
-  users.splice(users.indexOf(currentUser), 1)
-  console.log(users)
   if(rank.length === 0 && favRole.length === 0 && role.length === 0) {
     return users
   }
