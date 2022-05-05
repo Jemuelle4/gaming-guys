@@ -4,7 +4,7 @@ import { CardGroup, Row, Col} from 'react-bootstrap'
 import Nav from '../components/navbar'
 import { MapUsers } from '../components/HomepageFilter'
 
-const Home = () =>{
+const Home = (uid) =>{
   const [rank, setRank] = useState([])
   const [favRole, setFavRole] = useState([])
   const [role, setRole] = useState([])
@@ -19,7 +19,7 @@ const Home = () =>{
         <Col className='col-9'>
           <CardGroup>
             <Row  xs={1} md={2} lg={3}>
-              {MapUsers(rank, favRole, role)}
+              {MapUsers(rank, favRole, role, uid)}
             </Row>
           </CardGroup>
         </Col>

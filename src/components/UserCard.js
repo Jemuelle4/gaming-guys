@@ -74,9 +74,6 @@ function getEmblem(rank) {
 }
 
 function getRoleIcon(rank, role) {
-  if(rank==='Unranked') {
-    rank = 'Unranked'
-  }
   return <img style={{ height:'5rem', width:'5rem'}} src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/>
 }
 
