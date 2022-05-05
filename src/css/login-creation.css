@@ -111,10 +111,8 @@ button.role-submit{
 }
 
 div.grid-container{
-  display: grid;
-  grid-auto-flow: column;
-  grid-column-gap: 25px;
-  grid-row-gap: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .grid-7{
@@ -204,7 +202,7 @@ label {
 
   div.grid-container{
     display: grid;
-    grid-auto-flow:unset;
+    grid-auto-flow: unset;
     grid-template-columns: 1fr 1fr;
     grid-column-gap: 25px;
     grid-row-gap: 15px;
