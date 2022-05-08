@@ -105,7 +105,7 @@ const HomepageFilter = ({ rank, setRank, favRole, setFavRole, role, setRole}) =>
   }
 
   return (
-    <div className='sticky-top'>
+    <div>
       <h3>Filter by Rank</h3>
       <Form>
         <Row>

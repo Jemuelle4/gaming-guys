@@ -3,7 +3,7 @@ import Navbar from '../components/navbar'
 
 const About = () =>{
   return (
-    <div>
+    <div style={{marginTop: '100px'}}>
       <Navbar />
       <h1>About</h1>
       <div>

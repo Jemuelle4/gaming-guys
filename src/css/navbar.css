@@ -1,9 +1,27 @@
 .navbar{
-  background: #46474C !important;
-  padding: 25px;
-  margin: 15px 0 0 0;
+  background: #46474D !important;
+  margin: 0 0 15px 0;
+  border-bottom: 1px solid white;
 }
 
-.nav-link{
+.navlink {
   color: white !important;
+  text-decoration: none;
+}
+
+.navcontainer {
+
+  margin: 1rem;
+}
+
+.active {
+  border-bottom: 2px solid #26C1BA;
+}
+
+.home {
+  margin-left: 2rem;
+}
+
+.profilebutton {
+  margin-right: 2rem;
 }
