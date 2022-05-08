@@ -2,6 +2,7 @@ import React from 'react'
 import { Form, Row, Col } from 'react-bootstrap'
 import UserCard from '../components/UserCard'
 import { useCollection } from '../hooks/useCollection'
+import "../css/components.css";
 
 export function MapUsers(rank, favRole, role) {
   const { documents: users } = useCollection('users')
@@ -105,10 +106,10 @@ const HomepageFilter = ({ rank, setRank, favRole, setFavRole, role, setRole}) =>
   }
 
   return (
-    <div className='sticky-top'>
+    <div className='spacing'>
       <h3>Filter by Rank</h3>
       <Form>
-        <Row>
+        <Row fluid>
           <Col><Form.Check label='Iron' onChange={() => changeFilter('rank', 'Iron')}/></Col>
           <Col><Form.Check label='Diamond' onChange={() => changeFilter('rank', 'Diamond')}/></Col>
         </Row>
@@ -131,11 +132,17 @@ const HomepageFilter = ({ rank, setRank, favRole, setFavRole, role, setRole}) =>
       </Form>
       <h3>Filter by Role</h3>
       <Form>
-        <Form.Check label='Top' onChange={() => changeFilter('favRole', 'Top')}/>
-        <Form.Check label='Mid' onChange={() => changeFilter('favRole', 'Mid')}/>
-        <Form.Check label='Bot' onChange={() => changeFilter('favRole', 'Bot')}/>
-        <Form.Check label='Jungle' onChange={() => changeFilter('favRole', 'Jungle')}/>
-        <Form.Check label='Support' onChange={() => changeFilter('favRole', 'Support')}/>
+        <Row>
+          <Col><Form.Check label='Top' onChange={() => changeFilter('favRole', 'Top')}/></Col>
+          <Col><Form.Check label='Jungle' onChange={() => changeFilter('favRole', 'Jungle')}/></Col>
+        </Row>
+        <Row>
+          <Col><Form.Check label='Mid' onChange={() => changeFilter('favRole', 'Mid')}/></Col>
+          <Col> <Form.Check label='Support' onChange={() => changeFilter('favRole', 'Support')}/></Col>
+        </Row>
+        <Row>
+          <Col><Form.Check label='Bot' onChange={() => changeFilter('favRole', 'Bot')}/></Col>
+        </Row>
       </Form>
       <h3>Looking For</h3>
       <Form>

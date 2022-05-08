@@ -6,6 +6,7 @@ import { doc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import poster from '../poster.png'
+import "../css/components.css";
 
 const UserCard = ({ user, userKey }) =>{
   const { ...state} = useAuthContext()
@@ -33,33 +34,36 @@ const UserCard = ({ user, userKey }) =>{
             <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>
               <AddFriend/>
             </Button>
-            <Row>
-              <Col>
-                <Card.Title>{user.displayName}</Card.Title>
-              </Col>
-              <Col>
-              <Card.Text>{user.role}</Card.Text>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm={6} className='d-flex justify-content-center'>
-                {getEmblem(user.rank)}
-              </Col>
-              <Col sm={3} className='d-flex justify-content-center'>
-                {getRoleIcon(user.rank, user.fav_role[0])}
-              </Col>
-              <Col sm={3} className='d-flex justify-content-center'>
-                {getRoleIcon(user.rank, user.fav_role[1])}
-              </Col>
-            </Row>
-            <Row>
-              <Col sm={6} className='d-flex justify-content-center'>
-                <Card.Text>{user.rank}</Card.Text>
-              </Col>
-              <Col sm={6} className='d-flex justify-content-center'>
-                <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
-              </Col>
-            </Row>
+            <div className="information">
+              <Row>
+                <Col>
+                  <Card.Title>{user.displayName}</Card.Title>
+                </Col>
+                <Col>
+                <Card.Text>{user.role}</Card.Text>
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={6} className='d-flex justify-content-center'>
+                  {getEmblem(user.rank)}
+                </Col>
+                <Col sm={3} className='d-flex justify-content-center'>
+                  {getRoleIcon(user.rank, user.fav_role[0])}
+                </Col>
+                <Col sm={3} className='d-flex justify-content-center'>
+                  {getRoleIcon(user.rank, user.fav_role[1])}
+                </Col>
+              </Row>
+              <Row>
+                <Col sm={6} className='d-flex justify-content-center'>
+                  <Card.Text>{user.rank}</Card.Text>
+                </Col>
+                <Col sm={6} className='d-flex justify-content-center'>
+                  <Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
+                </Col>
+              </Row>
+            </div>
+            
           </Card.ImgOverlay>
         </Card>
         <UserCardModal user={user} show={modalShow} onHide={() => setModalShow(false)} />
@@ -72,11 +76,11 @@ const UserCard = ({ user, userKey }) =>{
 
 
 function getEmblem(rank) {
-  return <img style={{ height:'5rem', width:'5rem'}} src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + 'Icon'}/>
+  return <img className='icons' src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + 'Icon'}/>
 }
 
 function getRoleIcon(rank, role) {
-  return <img style={{ height:'5rem', width:'5rem'}} src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/>
+  return <img className='icons' src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/>
 }
 
 export default UserCard;
