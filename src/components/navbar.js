@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
@@ -30,7 +29,7 @@ export default function GuddyNavbar(){
       <Navbar.Toggle color='white' aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav>
-          <div className='navcontainer home'><NavLink className='navlink' exact to='/' activeClassName="active">Home</NavLink></div>
+          <div className='navcontainer home'><NavLink className='navlink' exact to='/landingpage' activeClassName="active">Home</NavLink></div>
           <div className='navcontainer'><NavLink className='navlink' exact to='/connections' activeClassName="active">Connections</NavLink></div>
           <div className='navcontainer'><NavLink className='navlink' exact to='/about' activeClassName="active">About</NavLink></div>
           <Button className='logoutbutton my-auto' onClick={logout}>Log Out</Button>
