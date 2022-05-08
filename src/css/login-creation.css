@@ -32,6 +32,15 @@ div.form-container{
   justify-content: center;
 }
 
+/*In Game Page*/
+.ingame-button button{
+  padding: 0.5em 2em;
+  margin: 10px;
+  background-color: transparent;
+  color: white;
+  border-color: #26C1BA;
+  border-radius: 10%
+}
 /*Role Page*/
 div.role-container{
   display:flex;

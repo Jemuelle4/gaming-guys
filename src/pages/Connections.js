@@ -14,7 +14,7 @@ const Connections = ({uid}) =>{
           <Col className='col-3'>
             <h1>Connection Requests</h1>
             <CardGroup>
-              {currentUser.receivedBy.map((uid) => {
+              {currentUser.recievedBy && currentUser.receivedBy.map((uid) => {
                 let user = users.find(user => user.id === uid)
                 return (
                   <Container fluid>

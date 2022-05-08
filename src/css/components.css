@@ -1,0 +1,68 @@
+/* mobile first design */
+
+
+/*****Homepage Filter*****/
+.spacing{
+  position: sticky;
+  top: 70px;
+  padding: 5px 15px 5px 15px;
+}
+
+.padding{
+  padding: 5px 5px;
+}
+
+.flex-container{
+  display: flex;
+}
+
+.formatting{
+  display: flex;
+  flex-direction: column;
+}
+/*****User Cards*****/
+
+div.card-img-overlay{
+  padding: 0px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.icons{
+  width: 50px;
+  height: 50px;
+}
+
+.information{
+background: rgb(0,0,0);
+background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.75) 68%, rgba(255,255,255,0) 100%);
+padding-top: 20px;
+}
+
+@media (min-width: 576px){
+
+/*****Homepage Filter*****/
+  .spacing{
+    position: sticky;
+    top: 70px;
+    padding: 5px 0px 5px 50px;
+  }
+
+  .formatting{
+    display: flex;
+    flex-direction: row;
+  }
+
+/*****User Cards*****/
+
+
+  
+}
+
+@media (min-width: 992px){ /*desktops */
+
+}
+
+@media (min-width: 1200px) { /*large desktops */
+
+}
