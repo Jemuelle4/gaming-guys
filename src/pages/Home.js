@@ -12,11 +12,11 @@ const Home = () =>{
   return (
     <div>
       <Navbar/>
-      <Row>
-        <Col className='col-3'>
+      <Row className="formatting">
+        <Col className='col-12 col-md-3'>
           <HomepageFilter rank={rank} setRank={setRank} favRole={favRole} setFavRole={setFavRole} role={role} setRole={setRole} />
         </Col>
-        <Col className='col-9'>
+        <Col className='col-12 col-md-9'>
           <CardGroup>
             <Row  xs={1} md={2} lg={3}>
               {MapUsers(rank, favRole, role)}
