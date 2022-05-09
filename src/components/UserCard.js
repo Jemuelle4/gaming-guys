@@ -10,6 +10,7 @@ import poster from '../poster.png'
 import "../css/components.css";
 
 const UserCard = ({ user, userKey }) =>{
+  const [modalShow, setModalShow] = useState(false);
   const { ...state} = useAuthContext()
   const handleClick = (e) => {
     e.preventDefault()
@@ -22,10 +23,9 @@ const UserCard = ({ user, userKey }) =>{
     updateDoc(ref2, {
       receivedBy: arrayUnion(state.user.uid)
     })
+    e.stopPropagation()
   }
 
-
-  const [modalShow, setModalShow] = useState(false);
   if(user){
     let coach = (user.role === 'Coach')
     let learner = (user.role === 'Learner')
@@ -76,14 +76,12 @@ const UserCard = ({ user, userKey }) =>{
               
             </Card.ImgOverlay>
           </Card>
-          <UserCardModal user={user} show={modalShow} onHide={() => setModalShow(false)} />
+          <UserCardModal user={user} userkey={userKey} show={modalShow} onHide={() => setModalShow(false)} />
         </Col>
         
     );
   }
 }
-
-
 
 function getEmblem(rank) {
   return <img className='icons' src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + 'Icon'}/>

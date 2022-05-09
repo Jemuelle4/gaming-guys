@@ -13,7 +13,7 @@ const Home = () =>{
   return (
     <div className='d-flex justify-content-between' style={{marginTop: '100px'}}>
       <Navbar/>
-      <Row className="formatting">
+      <Row className="formatting m-0">
         <Col className='col-12 col-md-3'>
           <HomepageFilter rank={rank} setRank={setRank} favRole={favRole} setFavRole={setFavRole} role={role} setRole={setRole} />
         </Col>
