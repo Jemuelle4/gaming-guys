@@ -8,7 +8,7 @@ const Connections = ({uid}) =>{
   if(users) {
     let currentUser = users.find(user => user.id === uid)
     return (
-      <div>
+      <div style={{marginTop: '100px'}}>
         <Navbar/>
         <Row>
           <Col className='col-3'>

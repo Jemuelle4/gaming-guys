@@ -10,7 +10,7 @@ const Home = () =>{
   const [role, setRole] = useState([])
 
   return (
-    <div>
+    <div className='d-flex justify-content-between' style={{marginTop: '100px'}}>
       <Navbar/>
       <Row className="formatting">
         <Col className='col-12 col-md-3'>
