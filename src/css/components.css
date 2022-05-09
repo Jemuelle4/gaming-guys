@@ -34,10 +34,22 @@ div.card-img-overlay{
 }
 
 .information{
-background: rgb(0,0,0);
 background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.75) 68%, rgba(255,255,255,0) 100%);
 padding-top: 20px;
 }
+
+.information.coach{
+  background: linear-gradient(0deg, rgba(163, 75, 112, 0.75) 0%, rgba(163, 75, 112, 0.75) 68%, rgba(163, 75, 112, 0) 100%);
+}
+
+.information.learner{
+  background: linear-gradient(0deg, rgba(48,115,115,0.75) 0%, rgba(48,115,115,0.75) 68%, rgba(48,115,115,0) 100%);
+}
+
+.information.teammate{
+  background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.75) 68%, rgba(255,255,255,0) 100%);
+}
+  
 
 @media (min-width: 576px){
 
