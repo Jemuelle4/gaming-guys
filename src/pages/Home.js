@@ -9,6 +9,7 @@ const Home = () =>{
   const [favRole, setFavRole] = useState([])
   const [role, setRole] = useState([])
 
+ 
   return (
     <div className='d-flex justify-content-between' style={{marginTop: '100px'}}>
       <Navbar/>
@@ -16,9 +17,9 @@ const Home = () =>{
         <Col className='col-12 col-md-3'>
           <HomepageFilter rank={rank} setRank={setRank} favRole={favRole} setFavRole={setFavRole} role={role} setRole={setRole} />
         </Col>
-        <Col className='col-12 col-md-9'>
-          <CardGroup>
-            <Row  xs={1} md={2} lg={3}>
+        <Col className='col-12 col-md-9 '>
+          <CardGroup >
+            <Row className='d-flex justify-content-center' xs={1} md={2} lg={3}>
               {MapUsers(rank, favRole, role)}
             </Row>
           </CardGroup>
