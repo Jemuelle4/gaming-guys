@@ -42,7 +42,7 @@ export default function GuddyNavbar(){
       </Navbar.Collapse>
       <Nav>
         <div className='navcontainer'><h5>Hello User</h5></div>
-        <Button className='navcontainer profilebutton my-auto'><img src={imgUrl} alt="user profile" style={{width: '5vh', objectFit: 'cover'}}></img></Button>
+        <Button className='navcontainer profilebutton my-auto rounded-circle'><img src={imgUrl} alt="user profile" style={{width: '5vh', objectFit: 'cover'}}></img></Button>
       </Nav>
     </Navbar>
   );
