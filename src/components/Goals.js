@@ -32,7 +32,7 @@ const Goals = () => {
 				<Form.Group>
 					<h3>Current Goals</h3>
 					{incomplete.map(goal => 
-						<Form.Check label={goal} onChange={e => completeGoal(e, goal)}/>
+						<Form.Check key={goal} label={goal} onChange={e => completeGoal(e, goal)}/>
 					)}
 				</Form.Group>
 				<Form.Group>

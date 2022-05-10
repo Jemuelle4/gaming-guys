@@ -18,11 +18,9 @@ const Connections = ({uid}) =>{
               {currentUser.receivedBy.map((uid) => {
                 let user = users.find(user => user.id === uid)
                 return (
-                  <Container fluid>
-                    <Row className='p-2' key={uid}>
-                      {getConnection(user)}
-                    </Row>
-                  </Container>
+                  <Row className='p-2' key={uid}>
+                    {getConnection(user)}
+                  </Row>
                 )
               })}
             </CardGroup>
@@ -40,7 +38,6 @@ const Connections = ({uid}) =>{
 }
 
 function getConnection(user) {
-  console.log(user)
   return(
       <Card className='bg-dark'>
         <Row>
