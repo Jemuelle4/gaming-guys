@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, CardGroup, Container, Row, Col, Button } from 'react-bootstrap'
 import Navbar from '../components/navbar'
 import { useCollection } from '../hooks/useCollection'
+import SelectedConnection from '../components/SelectedConnection'
 
 const Connections = ({uid}) =>{
   const { documents: users } = useCollection('users')
@@ -10,20 +11,16 @@ const Connections = ({uid}) =>{
     return (
       <div style={{marginTop: '100px'}}>
         <Navbar/>
-        <Row>
+        <Row className='m-0'>
           <Col className='col-3'>
             <h1>Connection Requests</h1>
             <CardGroup>
-              {currentUser.recievedBy && currentUser.receivedBy.map((uid) => {
+              {currentUser.receivedBy.map((uid) => {
                 let user = users.find(user => user.id === uid)
                 return (
-                  <Container fluid>
-                    <Row key={uid}>
-                      <Col>
-                        {getConnection(user)}
-                      </Col>
-                    </Row>
-                  </Container>
+                  <Row className='p-2' key={uid}>
+                    {getConnection(user)}
+                  </Row>
                 )
               })}
             </CardGroup>
@@ -32,7 +29,7 @@ const Connections = ({uid}) =>{
             <h1>This is the connections the user has</h1>
           </Col>
           <Col className='col-3'>
-            <h1>This is the selected user and goals</h1>
+            <SelectedConnection user={currentUser} />
           </Col>
         </Row>
       </div>
@@ -41,9 +38,8 @@ const Connections = ({uid}) =>{
 }
 
 function getConnection(user) {
-  console.log(user)
   return(
-      <Card>
+      <Card className='bg-dark'>
         <Row>
           <Col><Card.Title>{user.displayName}</Card.Title></Col>
           <Col><Card.Body>{user.rank}/{user.role}</Card.Body></Col>
