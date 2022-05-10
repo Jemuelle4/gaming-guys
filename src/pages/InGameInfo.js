@@ -19,16 +19,29 @@ function reducer(states, action) {
   }
 }
 
+function reducerStrengths(strengths, action) {
+  switch(action.type){
+
+  }
+}
+
+function reducerWeaknesses(weaknesses, action) {
+  switch(action.type){
+
+  }
+}
+
 export default function InGameInfo() {
   const { ...state } = useAuthContext()
   const [champData, setChampData] = useState([]);
   const [rank, setRank] = useState()
-  const [firstRole, setFirstRole] = useState()
-  const [secondRole, setSecondRole] = useState()
   const [states, dispatch] = useReducer(reducer, [])
+  const [strengths, dispatchStrengths] = useReducer(reducerStrengths, [])
+  const [weaknesses, dispatchWeaknesses] = useReducer(reducerWeaknesses, [])
   const [roleOptions, setRoleOptions] = useState([])
   const [favChamp, setFavChamp] = useState();
   const history = useHistory()
+
   useEffect(()=>{
     getChampionName()
   }, [])
@@ -42,6 +55,25 @@ export default function InGameInfo() {
      } catch(error) {
        console.log(error)
     }
+  }
+  const addStrengths = () => {
+    let rows = []
+    for(let i = 0; i < 3; i++){
+      rows.push(<input/>)
+    }
+    return <div>
+            <label>Strengths</label>
+            {rows}
+            <button type="button" className="button button-primary form-margin">+</button>
+          </div>
+  }
+
+  const addWeaknesses = () => {
+    return <div>
+            <label>Weaknesses</label>
+            <input/>
+            <button type="button" className="button button-primary form-margin">+</button>
+          </div>
   }
 
   const handleRole = (e) => {
@@ -129,12 +161,12 @@ export default function InGameInfo() {
                 <option disabled selected value> Select </option>
               </select>
             </div>
+            {addStrengths()}
+            {addWeaknesses()}
+            </div>
             <div id="creation-button">
               <button className="button button-primary form-margin" type="submit">Next</button>
-            </div>
-           </div>
-         
-          
+            </div>          
         </form>
       </div>
     </div>
