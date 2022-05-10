@@ -47,8 +47,8 @@ div.card-img-overlay{
 }
 
 .information{
-background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.75) 68%, rgba(255,255,255,0) 100%);
-padding-top: 20px;
+  background: linear-gradient(0deg, rgba(83, 84, 90, 0.75) 0%, rgba(83, 84, 90,.75) 68%, rgba(83, 84, 90,0) 100%);
+  padding-top: 20px;
 }
 
 .information.coach{
@@ -60,7 +60,7 @@ padding-top: 20px;
 }
 
 .information.teammate{
-  background: linear-gradient(0deg, rgba(0,0,0,.75) 0%, rgba(0,0,0,.75) 68%, rgba(255,255,255,0) 100%);
+  background: linear-gradient(0deg, rgba(83, 84, 90, 0.75) 0%, rgba(83, 84, 90,.75) 68%, rgba(83, 84, 90,0) 100%);
 }
 
 /*****User Cards Modal*****/
