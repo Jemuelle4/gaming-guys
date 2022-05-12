@@ -13,7 +13,7 @@ export default function Role() {
   const [image, setImage] = useState();
   const [preview, setPreview] = useState();
   const [clicked, setClicked] = useState({Coach: false, Learner: false, Teammate: false});
-  
+  const [imageUrl, setImageUrl] = useState();
 
   useEffect(() => {
     if (image) {
@@ -62,14 +62,15 @@ export default function Role() {
     const userRef = doc(db, "users", state.user.uid)
     const fileRef = ref(storage, state.user.uid + '.png')
     uploadBytes(fileRef, image)
-    getDownloadURL(fileRef).then(url =>{
-      updateDoc(userRef,{
-        role: role,
-        imgSrc: url
-     })
+    getDownloadURL(fileRef).then((url) =>{
+      setImageUrl(url)
     }).catch(function(e){
       console.log(e.message)
     })
+    updateDoc(userRef,{
+      role: role,
+      imgSrc: imageUrl
+   })
     console.log(image, preview)
     history.push('/')
   }

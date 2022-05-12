@@ -38,6 +38,8 @@ export default function InGameInfo() {
   const [states, dispatch] = useReducer(reducer, [])
   const [strengths, dispatchStrengths] = useReducer(reducerStrengths, [])
   const [weaknesses, dispatchWeaknesses] = useReducer(reducerWeaknesses, [])
+  const [strength, setStrength] = useState('')
+  const [weakness, setWeakness] = useState('')
   const [roleOptions, setRoleOptions] = useState([])
   const [favChamp, setFavChamp] = useState();
   const history = useHistory()
@@ -58,13 +60,9 @@ export default function InGameInfo() {
   }
   const addStrengths = () => {
     let rows = []
-    for(let i = 0; i < 3; i++){
-      rows.push(<input/>)
-    }
+
     return <div>
             <label>Strengths</label>
-            {rows}
-            <button type="button" className="button button-primary form-margin">+</button>
           </div>
   }
 
