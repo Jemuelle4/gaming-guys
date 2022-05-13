@@ -6,7 +6,7 @@ import { doc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import classNames from "classnames"
-import poster from '../poster.png'
+import garen from '../garen.png'
 import "../css/components.css";
 
 const UserCard = ({ user, userKey }) =>{
@@ -33,7 +33,7 @@ const UserCard = ({ user, userKey }) =>{
     return (
         <Col className='m-5' style={{ width: '20rem', height: '20rem'}}>
           <Card style={{ cursor:'pointer', width: '20rem', height: '20rem', border:'none'}} onClick={() => setModalShow(true)}>
-            <Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
+            <Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : garen} alt="Card image" />
             <Card.ImgOverlay>
               <div className='d-flex justify-content-end me-3 mt-3'>
                 <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>

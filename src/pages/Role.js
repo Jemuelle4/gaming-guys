@@ -58,18 +58,19 @@ export default function Role() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(3, image)
     const userRef = doc(db, "users", state.user.uid)
     const fileRef = ref(storage, state.user.uid + '.png')
-    uploadBytes(fileRef, image)
-    getDownloadURL(fileRef).then((url) =>{
-      updateDoc(userRef,{
-        role: role,
-        imgSrc: url
-      })
+    uploadBytes(fileRef, image).then(() =>{
+      getDownloadURL(fileRef).then((url) =>{
+        updateDoc(userRef,{
+          role: role,
+          imgSrc: url
+        })
     }).catch(function(e){
       console.log(e.message)
     })
-    console.log(image, preview)
+    })
     history.push('/')
   }
 
