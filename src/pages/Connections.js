@@ -13,7 +13,7 @@ const Connections = ({uid}) =>{
         <Navbar/>
         <Row className='m-0'>
           
-          <div className="d-flex flex-column-reverse flex-md-row">
+          <div className="d-flex flex-column-reverse flex-md-row mt-4">
             <Col className='col-12 col-md-3'>
               <h1>Connection Requests</h1>
               <CardGroup>
