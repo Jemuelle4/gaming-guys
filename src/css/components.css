@@ -102,7 +102,7 @@ div.card-img-overlay{
 }
 
 /*****Selected Connections*****/
-Button {
+.button-connections {
   margin-top: 15px !important;
   border-radius: 0px !important;
   width: 50%;

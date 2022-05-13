@@ -41,43 +41,46 @@ const SelectedConnection = (user) => {
 
 		return (
 			<div>
-				<Card className='d-flex flex-column' style={{ width: '20rem', height: '20rem', border:'none'}}>
-					<Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
+				<Card className='d-flex flex-column' style={{ width: '100%', height: '100%', border:'none'}}>
+					<Card.Img style={{ width: '100%', height: '20rem', objectFit: 'cover'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
 					<Card.ImgOverlay>
 						<div className={classNames('information', 'mt-auto', {coach: coach, learner: learner, teammate: teammate})}>
-							<Row>
-								<Col>
-									<Card.Title>{user.displayName}</Card.Title>
-								</Col>
-								<Col>
-									<Card.Text>{user.role}</Card.Text>
-								</Col>
-							</Row>
-							<Row>
-								<Col sm={6} className='d-flex justify-content-center'>
-									{getEmblem(user.rank)}
-								</Col>
-								<Col sm={3} className='d-flex justify-content-center'>
-									{getRoleIcon(user.rank, user.fav_role[0])}
-								</Col>
-								<Col sm={3} className='d-flex justify-content-center'>
-									{getRoleIcon(user.rank, user.fav_role[1])}
-								</Col>
-							</Row>
-							<Row>
-								<Col sm={6} className='d-flex justify-content-center'>
-									<Card.Text>{user.rank}</Card.Text>
-								</Col>
-								<Col sm={6} className='d-flex justify-content-center'>
-									<Card.Text>{user.fav_role[0]}/{user.fav_role[1]}</Card.Text>
-								</Col>
-							</Row>
+						<Row className='mb-2 g-0'>
+                  <Col xs={6}>
+                    <Card.Title className='ms-3'>{user.displayName}</Card.Title>
+                  </Col>
+                  <Col xs={6} className='d-flex justify-content-end'>
+                  <Card.Text className='me-3'>{user.role}</Card.Text>
+                  </Col>
+                </Row>
+                <Row className='g-0'>
+                  <Col xs={4} className='d-flex justify-content-center'>
+                    {getEmblem(user.rank)}
+                  </Col>
+                  <Col xs={4} className='d-flex justify-content-center'>
+                    {getRoleIcon(user.rank, user.fav_role[0])}
+                  </Col>
+                  <Col xs={4} className='d-flex justify-content-center'>
+                    {getRoleIcon(user.rank, user.fav_role[1])}
+                  </Col>
+                </Row>
+                <Row className="pb-2 g-0">
+                  <Col xs={4} className='d-flex justify-content-center'>
+                    <Card.Text>{user.rank}</Card.Text>
+                  </Col>
+                  <Col xs={4} className='d-flex justify-content-center'>
+                    <Card.Text>{user.fav_role[0]}</Card.Text>
+                  </Col>
+                  <Col xs={4} className='d-flex justify-content-center'>
+                   <Card.Text>{user.fav_role[1]}</Card.Text>
+                  </Col>
+                </Row>
 						</div>
 					</Card.ImgOverlay>
 				</Card>
 				<div>
-					<Button className={`${!design ? "design" : ""}`}  onClick={() => {setInfo(true); setGoals(false); setDesign(!design)}}>Information</Button>
-					<Button className={`${design ? "design" : ""}`}  onClick={() => {setInfo(false); setGoals(true); setDesign(!design);}}>Goals</Button>
+					<Button className={`${!design ? "design" : ""} button-connections`}  onClick={() => {setInfo(true); setGoals(false); setDesign(!design)}}>Information</Button>
+					<Button className={`${design ? "design" : ""} button-connections`}  onClick={() => {setInfo(false); setGoals(true); setDesign(!design);}}>Goals</Button>
 				</div>
 				<div>
 					{bottomContent}
