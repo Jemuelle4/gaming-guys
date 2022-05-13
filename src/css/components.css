@@ -101,6 +101,25 @@ div.card-img-overlay{
   
 }
 
+/*****Selected Connections*****/
+Button {
+  margin-top: 15px !important;
+  border-radius: 0px !important;
+  width: 50%;
+  background: transparent !important;
+  border: none !important;
+}
+
+.btn.focus, .btn:focus {
+  outline: 0;
+  box-shadow: none!important;
+}
+.design{
+  outline: none !important;
+  border-bottom: 2px solid #26C1BA !important;
+}
+
+
 @media (max-width: 576px){
   .modalwrap {
     position: absolute;

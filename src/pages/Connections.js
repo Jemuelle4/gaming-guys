@@ -12,25 +12,29 @@ const Connections = ({uid}) =>{
       <div style={{marginTop: '100px'}}>
         <Navbar/>
         <Row className='m-0'>
-          <Col className='col-3'>
-            <h1>Connection Requests</h1>
-            <CardGroup>
-              {currentUser.receivedBy.map((uid) => {
-                let user = users.find(user => user.id === uid)
-                return (
-                  <Row className='p-2' key={uid}>
-                    {getConnection(user)}
-                  </Row>
-                )
-              })}
-            </CardGroup>
-          </Col>
-          <Col className='col-6'>
-            <h1>This is the connections the user has</h1>
-          </Col>
-          <Col className='col-3'>
-            <SelectedConnection user={currentUser} />
-          </Col>
+          
+          <div className="d-flex flex-column-reverse flex-md-row">
+            <Col className='col-12 col-md-3'>
+              <h1>Connection Requests</h1>
+              <CardGroup>
+                {currentUser.receivedBy.map((uid) => {
+                  let user = users.find(user => user.id === uid)
+                  return (
+                    <Row className='p-2' key={uid}>
+                      {getConnection(user)}
+                    </Row>
+                  )
+                })}
+              </CardGroup>
+            </Col>
+            <Col className='col-12 col-md-6'>
+              <h1>This is the connections the user has</h1>
+            </Col>
+            <Col className='col-12 col-md-3'>
+              <SelectedConnection user={currentUser} />
+            </Col>
+          </div>
+       
         </Row>
       </div>
     );

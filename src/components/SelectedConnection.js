@@ -8,6 +8,7 @@ import "../css/components.css";
 const SelectedConnection = (user) => {
 	const [info, setInfo] = useState(true)
 	const [goals, setGoals] = useState(false)
+	const [design, setDesign] = useState()
 
 	if(user) {
 		user = user.user
@@ -75,8 +76,8 @@ const SelectedConnection = (user) => {
 					</Card.ImgOverlay>
 				</Card>
 				<div>
-					<Button onClick={() => {setInfo(true); setGoals(false);}}>Information</Button>
-					<Button onClick={() => {setInfo(false); setGoals(true);}}>Goals</Button>
+					<Button className={`${!design ? "design" : ""}`}  onClick={() => {setInfo(true); setGoals(false); setDesign(!design)}}>Information</Button>
+					<Button className={`${design ? "design" : ""}`}  onClick={() => {setInfo(false); setGoals(true); setDesign(!design);}}>Goals</Button>
 				</div>
 				<div>
 					{bottomContent}
@@ -93,5 +94,7 @@ function getEmblem(rank) {
 function getRoleIcon(rank, role) {
 	return <img className='icons' src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/>
 }
+
+
 
 export default SelectedConnection;
