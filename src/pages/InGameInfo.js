@@ -1,6 +1,6 @@
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import poster from '../poster.png'
-import { doc, updateDoc, setDoc } from 'firebase/firestore'
+import { doc, updateDoc } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import { useEffect, useState, useReducer } from "react";
@@ -16,19 +16,39 @@ function reducer(states, action) {
     case 'pop-out':
       states.shift()
       return states
+    default:
+      return states
   }
 }
 
 function reducerStrengths(strengths, action) {
   switch(action.type){
-
+    case 'add-strength':
+      return [...strengths, newStrength(action.payload.strength)]
+    case 'delete-strength':
+      return strengths.filter(strength => strength.id !== action.payload.id)
+    default:
+      return strengths
   }
+}
+
+function newStrength(strength){
+  return { id: Date.now(), strength: strength}
 }
 
 function reducerWeaknesses(weaknesses, action) {
   switch(action.type){
-
+    case 'add-weakness':
+      return [...weaknesses, newWeakness(action.payload.weakness)]
+    case 'delete-weakness':
+      return weaknesses.filter(weakness => weakness.id !== action.payload.id)
+    default:
+      return weaknesses
   }
+}
+
+function newWeakness(weakness){
+  return { id: Date.now(), weakness: weakness}
 }
 
 export default function InGameInfo() {
@@ -58,20 +78,18 @@ export default function InGameInfo() {
        console.log(error)
     }
   }
-  const addStrengths = () => {
-    let rows = []
 
-    return <div>
-            <label>Strengths</label>
-          </div>
+  function handleStrength(e){
+    e.preventDefault()
+    dispatchStrengths({ type:'add-strength', payload: { strength : strength }})
+    setStrength('')
   }
 
-  const addWeaknesses = () => {
-    return <div>
-            <label>Weaknesses</label>
-            <input/>
-            <button type="button" className="button button-primary form-margin">+</button>
-          </div>
+  function handleWeakness(e){
+    e.preventDefault()
+    dispatchWeaknesses({ type:'add-weakness', payload: { weakness : weakness }})
+    console.log(weaknesses)
+    setWeakness('')
   }
 
   const handleRole = (e) => {
@@ -104,12 +122,16 @@ export default function InGameInfo() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    const strengthValues = strengths.map(strength => strength.strength)
+    const weaknessValues = weaknesses.map(weakness => weakness.weakness)
     const ref = doc(db, "users", state.user.uid)
     try{
       updateDoc(ref,{
         rank: rank,
         fav_role: [states[0], states[1]],
-        fav_champ: favChamp
+        fav_champ: favChamp,
+        strengths: strengthValues, 
+        weaknesses: weaknessValues
      })
      history.push('/communication')
     } catch(err) {
@@ -159,12 +181,36 @@ export default function InGameInfo() {
                 <option disabled selected value> Select </option>
               </select>
             </div>
-            {addStrengths()}
-            {addWeaknesses()}
+            <div>
+              <label>Strengths</label>
+              <input type="text" value={strength} onChange={e => setStrength(e.target.value)}></input>
+              <button type="button" className="button button-primary form-margin" value={strength} 
+              onClick={handleStrength}>+</button>
+              {strengths.map(strength => {
+                return <div>
+                      <span>{strength.strength}</span>
+                      <button type="button" onClick={()=> dispatchStrengths({type: 'delete-strength', 
+                      payload: {id: strength.id}})}>x</button>
+                  </div>
+              })}
+            </div>
+            <div>
+              <label>Weaknesses</label>
+              <input type="text" value={weakness} onChange={e => setWeakness(e.target.value)}></input>
+              <button type="button" className="button button-primary form-margin" value={weakness}
+              onClick={handleWeakness}>+</button>
+              {weaknesses.map(weakness => {
+                return <div>
+                  <span>{weakness.weakness}</span>
+                  <button type="button" onClick={()=> dispatchWeaknesses({type: 'delete-weakness', 
+                      payload: {id: weakness.id}})}>x</button>
+                  </div>
+              })}
             </div>
             <div id="creation-button">
               <button className="button button-primary form-margin" type="submit">Next</button>
-            </div>          
+            </div>
+            </div>         
         </form>
       </div>
     </div>
