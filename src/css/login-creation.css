@@ -185,6 +185,25 @@ label {
   background: #26C1BA;
   color: #fff;
 }
+
+.strength-weakness{
+  color: black;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  padding: 6px 0px 6px 10px;
+  margin-top: 10px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+}
+
+.x-button{
+  background-color: transparent !important;
+  border: 0;
+  padding-right: 10px;
+}
  
 
 @media (min-width: 576px){

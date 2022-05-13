@@ -184,12 +184,12 @@ export default function InGameInfo() {
             <div>
               <label>Strengths</label>
               <input type="text" value={strength} onChange={e => setStrength(e.target.value)}></input>
-              <button type="button" className="button button-primary form-margin" value={strength} 
+              <button type="button" className="button button-primary form-margin mb-3" value={strength} 
               onClick={handleStrength}>+</button>
               {strengths.map(strength => {
-                return <div>
-                      <span>{strength.strength}</span>
-                      <button type="button" onClick={()=> dispatchStrengths({type: 'delete-strength', 
+                return <div className='strength-weakness'>
+                      <span >{strength.strength}</span>
+                      <button type="button" className='x-button' onClick={()=> dispatchStrengths({type: 'delete-strength', 
                       payload: {id: strength.id}})}>x</button>
                   </div>
               })}
@@ -197,12 +197,12 @@ export default function InGameInfo() {
             <div>
               <label>Weaknesses</label>
               <input type="text" value={weakness} onChange={e => setWeakness(e.target.value)}></input>
-              <button type="button" className="button button-primary form-margin" value={weakness}
+              <button type="button" className="button button-primary form-margin mb-3" value={weakness}
               onClick={handleWeakness}>+</button>
               {weaknesses.map(weakness => {
-                return <div>
-                  <span>{weakness.weakness}</span>
-                  <button type="button" onClick={()=> dispatchWeaknesses({type: 'delete-weakness', 
+                return <div className='strength-weakness'>
+                  <span >{weakness.weakness}</span>
+                  <button type="button" className='x-button' onClick={()=> dispatchWeaknesses({type: 'delete-weakness', 
                       payload: {id: weakness.id}})}>x</button>
                   </div>
               })}
