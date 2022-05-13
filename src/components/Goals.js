@@ -22,12 +22,12 @@ const Goals = () => {
 	}
 
 	return (
-		<div>
-			<h1>Goals</h1>
+		<div className='mt-2'>
+			<h2>Goals</h2>
 			<Form onSubmit={onFormSubmit}>
 				<Form.Group>
 					<Form.Control type="text" placeholder="Add a goal" value={newGoal} onChange={e => setNewGoal(e.target.value)}/>
-					<Button type='submit'>Submit</Button>
+					<Button style={{width: '100%', marginTop:'10px'}} type='submit'>Submit</Button>
 				</Form.Group>
 				<Form.Group>
 					<h3>Current Goals</h3>
