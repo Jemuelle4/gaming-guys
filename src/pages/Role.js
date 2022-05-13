@@ -80,7 +80,7 @@ export default function Role() {
       </div>
       
       <div>
-      <form className="role-form" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
             <div className="role-button-container">
 
               <div className="button-container">
@@ -111,7 +111,7 @@ export default function Role() {
                   ) : (
                   <button className="role-button teammate" value="Teammate" onClick={handleClick}>Teammate</button>
                 )}
-                  {clicked['Teammate'] && <button onClick={handleImage} className="role-picture">Add Profile Image</button>}
+                  {clicked['Teammate'] && <button onClick={handleImage} className="button-picture">Add Profile Image</button>}
                   <input type="file" style={{display: "none"}} ref={fileInputRef} accept="image/*"
                 onChange={handleChange}/>
               </div>
