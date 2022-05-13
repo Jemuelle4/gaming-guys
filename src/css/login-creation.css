@@ -101,6 +101,7 @@ div.role-button-container img{
 }
 button.role-button{
   flex:1;
+  font-size: 2.5rem;
   background-color: #04AA6D;
   color: white;
   opacity: 0.8;
@@ -302,27 +303,13 @@ label {
   }
 
   div.role-button-container img{
-    flex:1;
-    color: white;
-    opacity: 0.8;
-    text-align: center;
-    display: inline-block;
-    width: 50%;
-    height: 50%;
-    border-radius: 50%;
-    cursor: pointer;  
+    font-size: 2.5rem;
+  
   }
   button.role-button{
-    flex:1;
-    color: white;
-    opacity: 0.8;
-    text-align: center;
-    display: inline-block;
+    font-size: 3rem;
     width: 375px;
     max-height: 375px;
-    border-radius: 50%;
-    cursor: pointer;
-    padding: 0px 25px;
   }
 
 }
