@@ -45,11 +45,23 @@ const Connections = ({uid}) =>{
       return (receivedBy.map((receivedID) => {
         let receivedUser = users.find(user => user.id === receivedID)
         return (
-          <Row className='p-2' key={uid}>
+          <Row className='p-2'>
             {getConnection(receivedUser)}
           </Row>
         )
       }))
+    } else {
+      return <h4>No new requests! Go send some requests to make new connections!</h4>
+    }
+  }
+
+  function mapConnections(connections) {
+    if(connections) {
+      return connections.map((connectionID) => {
+        return <AcceptedConnection uid={connectionID} setSelectedUser={setSelectedUser}/>
+      })
+    } else {
+      return <h4>No connections! Accept some requests or go send requests to make new connections!</h4>
     }
   }
   
@@ -82,9 +94,7 @@ const Connections = ({uid}) =>{
           </Col>
           <Col className='col-6'>
             <h1>Connections</h1>
-            {currentUser.connections.map(connectionID => (
-              <AcceptedConnection uid={connectionID} setSelectedUser={setSelectedUser}/>
-            ))}
+            {mapConnections(currentUser.connections)}
           </Col>
           <Col className='col-3'>
             <SelectedConnection user={selectedUser} currentUserID={currentUser.id}/>

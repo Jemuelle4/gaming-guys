@@ -74,7 +74,7 @@ const Goals = ({selectedUser, currentUserID}) => {
 		}
 	}
 
-	if(selectedUser && selectedUser.goals) {
+	if(selectedUser && selectedUser.goals[currentUserID]) {
 		return (
 			<div>
 				<Form onSubmit={onFormSubmit}>
