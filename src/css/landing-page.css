@@ -2,6 +2,41 @@
 body{
   background: #46474C !important;
   color: #fff !important;
+   
+}
+
+h2 {
+  color: #A34B70;
+
+}
+
+.page {
+  background-image: url("../imgs/background.png");
+	 /* Full height */
+   height: 50%;
+
+   /* Center and scale the image nicely */
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
+
+p {
+  font-size: larger;
+}
+
+.login {
+  color: #A34B70;
+  font-weight: bold;
+}
+
+
+.logo {
+  position: absolute;
+  height:auto;
+  top: 0px;
+  left: 0px;
+  padding: 50px;   
 }
 
 .hero{

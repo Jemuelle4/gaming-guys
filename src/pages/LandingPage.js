@@ -4,18 +4,30 @@ import { Link, Redirect} from "react-router-dom";
 import {useSignup} from '../hooks/useSignup'
 import "../css/landing-page.css";
 import mockup from "../imgs/Mockup.png"
+import logo from "../imgs/logo.png"
+import team from "../imgs/teammate.png"
+import skill from "../imgs/skill.png"
+import goal from "../imgs/goal.png"
 
 const LandingPage = () =>{
   const { error, signup } = useSignup()
-  var heromessage = "Find Teammates. \n Improve Skills."
+  var heromessage = "Find Teammates. \n Improve Your Skills."
   return (
+    
     <div>
+      <div className="logo">
+            <img src= {logo} className="logo" />
+          </div>
+          
+      <div className="page">
+
+
       <section className="hero">
         <div className="hero-title">
           <div className="hero-container-details">
             <h1 className="hero-message">{heromessage}</h1>
             <Link to ="/signup"><button className="button button-primary">Sign Up</button></Link>
-            <p>Already have an account? <Link to ="/login">Log In</Link></p>
+            <p>Already have an account? <Link to ="/login" className="login">Log In</Link></p>
         {error && <p>{error}</p>}
           </div>
           
@@ -27,21 +39,25 @@ const LandingPage = () =>{
         
         
       </section>
-
+      </div>
+      
       <section className="description-container">
         <div className="description-items">
+        <img src= {team} />
           <h2>Find Teammates</h2>
-          <p className="text-center">Find your ideal teammates base on rank, position, and interests</p>
+          <p className="text-center">Match with your ideal teammates based on your gameplay, preferences, and interests</p>
         </div>
         
         <div className="description-items">
+        <img src= {skill} />
           <h2>Improve Your Skills</h2>
-          <p className="text-center">Help each other by complementing your strengths and weaknesses</p>
+          <p className="text-center">Work with your new teammates to get through the tough challenges and conquer the Rift</p>
         </div>
 
         <div className="description-items">
+        <img src= {goal} />
           <h2>Assign Goals</h2>
-          <p className="text-center">Keep track of practice goals</p>
+          <p className="text-center">Keep track of your progress with assigned goals by your teammates or assign goals to your teammates</p>
         </div>
       </section>
       
