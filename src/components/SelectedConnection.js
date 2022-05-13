@@ -5,12 +5,11 @@ import Goals from './Goals'
 import poster from '../poster.png'
 import "../css/components.css";
 
-const SelectedConnection = (user) => {
+const SelectedConnection = ({user, currentUserID}) => {
 	const [info, setInfo] = useState(true)
 	const [goals, setGoals] = useState(false)
 
 	if(user) {
-		user = user.user
 		let coach = (user.role === 'Coach')
 		let learner = (user.role === 'Learner')
 		let teammate = (user.role === 'Teammate')
@@ -34,7 +33,7 @@ const SelectedConnection = (user) => {
 		if(goals) {
 			bottomContent = 
 				<div>
-					<Goals />
+					<Goals selectedUser={user} currentUserID={currentUserID}/>
 				</div>
 		}
 
