@@ -9,9 +9,11 @@ const Goals = ({selectedUser, currentUserID}) => {
 	const { ...state} = useAuthContext()
 	let [newGoal, setNewGoal] = useState('')
 	const { documents: users } = useCollection('users')
+	let currentUser;
 
 	if(users){
 		selectedUser = users.find(user => user.id === selectedUser.id)
+		currentUser = users.find(user => user.id === currentUserID)
 	}
 
 	let incompleteString = 'goals.' + selectedUser.id + '.incomplete'
@@ -45,19 +47,6 @@ const Goals = ({selectedUser, currentUserID}) => {
     })
 	}
 
-	function uncompleteGoal(goal) {
-		const ref1 = doc(db, "users", state.user.uid)
-		updateDoc(ref1,{
-      [completeString]: arrayRemove(goal),
-			[incompleteString]: arrayUnion(goal)
-    })
-		const ref2 = doc(db, "users", selectedUser.id)
-		updateDoc(ref2,{
-      [currentCompleteString]: arrayRemove(goal),
-			[currentIncompleteString]: arrayUnion(goal)
-    })
-	}
-
 	function mapIncomplete(incomplete) {
 		if(incomplete) {
 			return (incomplete.map(goal =>
@@ -69,27 +58,27 @@ const Goals = ({selectedUser, currentUserID}) => {
 	function mapComplete(complete) {
 		if(complete) {
 			return (complete.map(goal =>
-				<Form.Check key={goal} label={goal} onChange={() => uncompleteGoal(goal)}/>
+				<Form.Check disabled key={goal} label={goal}/>
 			))
 		}
 	}
 
-	if(selectedUser && selectedUser.goals[currentUserID]) {
+	if(currentUser && currentUser.goals && currentUser.goals[selectedUser.id]) {
 		return (
-			<div>
+			<div className='mt-2'>
 				<Form onSubmit={onFormSubmit}>
-					<Form.Group>
+					<Form.Group className='d-flex'>
 						<Form.Control type="text" placeholder="Add a goal" value={newGoal} onChange={e => setNewGoal(e.target.value)}/>
-						<Button type='submit'>Submit</Button>
+						<Button className='mx-2' type='submit'>Submit</Button>
 					</Form.Group>
 					<div >
 						<h4>Current Goals</h4>
 						<Form.Group style={{maxHeight: '150px', overflowY: 'scroll'}}>
-							{mapIncomplete(selectedUser.goals[currentUserID].incomplete)}
+							{mapIncomplete(currentUser.goals[selectedUser.id].incomplete)}
 						</Form.Group>
 						<h4>Completed Goals</h4>
 						<Form.Group style={{maxHeight: '150px', overflowY: 'scroll'}}>
-							{mapComplete(selectedUser.goals[currentUserID].complete)}
+							{mapComplete(currentUser.goals[selectedUser.id].complete)}
 						</Form.Group>
 					</div>
 				</Form>
@@ -99,9 +88,9 @@ const Goals = ({selectedUser, currentUserID}) => {
 		return (
 			<div>
 				<Form onSubmit={onFormSubmit}>
-					<Form.Group>
+					<Form.Group className='d-flex'>
 						<Form.Control type="text" placeholder="Add a goal" value={newGoal} onChange={e => setNewGoal(e.target.value)}/>
-						<Button type='submit'>Submit</Button>
+						<Button className='mx-2' type='submit'>Submit</Button>
 					</Form.Group>
 					<h3>Add some goals to get started!</h3>
 				</Form>

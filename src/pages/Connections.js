@@ -45,13 +45,14 @@ const Connections = ({uid}) =>{
       return (receivedBy.map((receivedID) => {
         let receivedUser = users.find(user => user.id === receivedID)
         return (
-          <Row className='p-2'>
-            {getConnection(receivedUser)}
-          </Row>
+          <Col className='col-12 col-md-3'>
+            <h1>Connection Requests</h1>
+            <CardGroup>
+              {getConnection(receivedUser)}
+            </CardGroup>
+          </Col>
         )
       }))
-    } else {
-      return <h4>No new requests! Go send some requests to make new connections!</h4>
     }
   }
 
@@ -86,17 +87,14 @@ const Connections = ({uid}) =>{
       <div style={{marginTop: '100px'}}>
         <Navbar/>
         <Row className='m-0'>
-          <Col className='col-3'>
-            <h1>Connection Requests</h1>
+          {mapConnectionRequests(currentUser.receivedBy)}
+          <Col xs>
+            <h1>Connections</h1>
             <CardGroup>
-              {mapConnectionRequests(currentUser.receivedBy)}
+              {mapConnections(currentUser.connections)}
             </CardGroup>
           </Col>
-          <Col className='col-6'>
-            <h1>Connections</h1>
-            {mapConnections(currentUser.connections)}
-          </Col>
-          <Col className='col-3'>
+          <Col className='col-12 col-md-3'>
             <SelectedConnection user={selectedUser} currentUserID={currentUser.id}/>
           </Col>
         </Row>

@@ -25,8 +25,8 @@ const AcceptedConnection = ({uid, setSelectedUser}) => {
 		}
 
 		return (
-			<div>
-				<Card className='d-flex flex-column' style={{ cursor: 'pointer', width: '20rem', height: '20rem', border:'none'}} onClick={() => setSelectedUser(user)}>
+			<div className='d-flex'>
+				<Card className='d-flex flex-column m-2 accepted-connections' style={{ cursor: 'pointer', width: '20rem', height: '20rem', border:'none'}} onClick={() => setSelectedUser(user)}>
 					<Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
 					<Card.ImgOverlay>
 						<div className={classNames('information', 'mt-auto', {coach: coach, learner: learner, teammate: teammate})}>
