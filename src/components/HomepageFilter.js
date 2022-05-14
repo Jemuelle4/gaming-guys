@@ -3,16 +3,41 @@ import { Form, Row, Col } from 'react-bootstrap'
 import UserCard from '../components/UserCard'
 import { useCollection } from '../hooks/useCollection'
 import "../css/components.css";
+import { useAuthContext } from '../hooks/useAuthContext'
 
 export function MapUsers(rank, favRole, role) {
   const { documents: users } = useCollection('users')
+  const { user } = useAuthContext()
+
   let filteredUsers = []
-  if(users) {
-    filteredUsers = filterUsers(users, rank, favRole, role)
+
+  if(user && users) {
+    filteredUsers = removeConnections(user, users)
+    filteredUsers = removeSelf(user, filteredUsers)
   }
+
+  if(users) {
+    filteredUsers = filterUsers(filteredUsers, rank, favRole, role)
+  }
+
   return filteredUsers.map(user => (
     <UserCard user={user} userKey={user.id} key={user.id}/>
   ))
+}
+
+function removeSelf(currentUser, users) {
+  return users.filter(user => user.id !== currentUser.uid)
+}
+
+function removeConnections(currentUserID, users) {
+  let currentUser = users.filter(user => user.id === currentUserID.uid)
+  let filteredUsers = users
+  if(currentUser[0].connections){
+    for(const id of currentUser[0].connections) {
+      filteredUsers = filteredUsers.filter(user => user.id !== id)
+    }
+  }
+  return filteredUsers
 }
 
 function filterUsers(users, rank, favRole, role) {
