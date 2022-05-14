@@ -6,7 +6,7 @@ import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import "../css/login-creation.css";
 
-export default function Communication() {
+export default function Communication(props) {
   const { ...state } = useAuthContext()
   const [summonerName, setSummonerName] = useState('')
   const [instagram, setInstagram] = useState('')
@@ -34,9 +34,11 @@ export default function Communication() {
   
   return (
     <div className="flex-container">
+      {props.mode === "page"? (
       <div className='poster-container'>
         <img src={poster} alt="poster"></img>
       </div>
+      ):('')}
       <div className='login-container'>
         <h2>Communication</h2>
         <form id="communication-form" onSubmit={handleSubmit}>
@@ -99,7 +101,18 @@ export default function Communication() {
               onChange={e => setAboutYou(e.target.value)}
               value={aboutYou}
               /> 
-            </div> 
+            </div>
+            {props.mode === "page"? (
+                <div className="form-margin creation-button">
+                  <button form='communication-form' type="submit" className="button button-primary form-margin">
+                  Create Profile</button>
+                </div>
+            ):(
+              <div className="form-margin creation-button">
+              <button form='communication-form' type="submit" className="button button-primary form-margin">
+              Edit Profile</button>
+              </div>
+            )}
           </div>
         </form>
       </div>

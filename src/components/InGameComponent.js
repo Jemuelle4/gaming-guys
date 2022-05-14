@@ -51,7 +51,7 @@ function newWeakness(weakness){
   return { id: Date.now(), weakness: weakness}
 }
 
-export default function InGameComponent() {
+export default function InGameComponent(props) {
   const { ...state } = useAuthContext()
   const [champData, setChampData] = useState([]);
   const [rank, setRank] = useState()
@@ -141,9 +141,11 @@ export default function InGameComponent() {
   }
   return (
     <div className="flex-container">
+      {props.mode === "page"? (
       <div className='poster-container'>
         <img src={poster} alt="poster"></img>
       </div>
+      ):('')}
       <div className='login-container'>
         <h2>In-Game Information</h2>
         <form id='ingame-form' onSubmit={handleSubmit}>
@@ -207,6 +209,17 @@ export default function InGameComponent() {
                   </div>
               })}
             </div>
+            {props.mode === "page"? (
+                <div id="creation-button">
+                    <button form='ingame-form' className="button button-primary form-margin" 
+                    type="submit">Next</button>
+                </div>
+            ):(
+                <div id="creation-button">
+                    <button form='ingame-form' className="button button-primary form-margin" 
+                    type="submit">Edit Profile</button>
+                </div>
+            )}
             </div>         
         </form>
       </div>
