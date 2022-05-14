@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, Row, Col } from 'react-bootstrap';
 import { useCollection } from '../hooks/useCollection'
 import "../css/components.css";
-import poster from '../poster.png'
+import garen from '../garen.png'
 import classNames from 'classnames'
 
 const AcceptedConnection = ({uid, setSelectedUser}) => {
@@ -27,7 +27,7 @@ const AcceptedConnection = ({uid, setSelectedUser}) => {
 		return (
 			<div className='d-flex'>
 				<Card className='d-flex flex-column m-2 accepted-connections' style={{ cursor: 'pointer', width: '20rem', height: '20rem', border:'none'}} onClick={() => setSelectedUser(user)}>
-					<Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
+					<Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : garen} alt="Card image" />
 					<Card.ImgOverlay>
 						<div className={classNames('information', 'mt-auto', {coach: coach, learner: learner, teammate: teammate})}>
 							<Row>

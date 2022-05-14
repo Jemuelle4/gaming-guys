@@ -35,6 +35,7 @@ export default function Role() {
 
   const handleChange = (e) => {
     const file = e.target.files[0];
+    console.log(file.type)
     if (file && file.type.substr(0,5) === "image") {
       setImage(file);
     } else {
@@ -58,7 +59,6 @@ export default function Role() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(3, image)
     const userRef = doc(db, "users", state.user.uid)
     const fileRef = ref(storage, state.user.uid + '.png')
     uploadBytes(fileRef, image).then(() =>{
@@ -97,7 +97,7 @@ export default function Role() {
 
               <div className="button-container">
                 {preview && clicked['Learner']? (
-                  <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
+                  <img alt="preview" src={preview}/>
                   ) : (
                   <button className="role-button learner" value="Learner" onClick={handleClick}>Learner</button>
                   )}

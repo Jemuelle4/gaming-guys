@@ -80,7 +80,6 @@ div.button-container{
   flex-direction: column;
   align-items: space-around;
   padding: 25px 25px;
-  height: 400px;
 }
 
 div.role-button-container{
@@ -91,11 +90,10 @@ div.role-button-container img{
   flex:1;
   background-color: #04AA6D;
   color: white;
-  opacity: 0.8;
   text-align: center;
   display: inline-block;
-  width: 50%;
-  height: 50%;
+  width: 325px;
+  height: 325px;
   border-radius: 50%;
   cursor: pointer;  
 }
@@ -298,18 +296,19 @@ label {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    height: 500px;
     padding: 0px 25px;
   }
 
   div.role-button-container img{
     font-size: 2.5rem;
+    width: 375px;
+    height: 375px;
   
   }
   button.role-button{
     font-size: 3rem;
     width: 375px;
-    max-height: 375px;
+    min-height: 375px;
   }
 
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, Link } from 'react';
 import { Navbar, Nav, Button } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'

@@ -8,6 +8,7 @@ import InGameInfo from "./pages/InGameInfo"
 import Communication from './pages/Communication'
 import Role from './pages/Role'
 import LandingPage from './pages/LandingPage'
+import UserProfile from './pages/UserProfile'
 import { useAuthContext } from './hooks/useAuthContext'
 
 function App() {
@@ -52,6 +53,10 @@ function App() {
               <Route path="/landingpage">
                 {!user && <LandingPage/>}
                 {user && <Home/>}
+              </Route>
+              <Route path="/profile">
+                {!user && <LandingPage/>}
+                {user && <UserProfile/>}
               </Route>
           </Switch>
         </BrowserRouter>
