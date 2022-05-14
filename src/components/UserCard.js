@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Card, Button, Row, Col } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
+import {ReactComponent as Checkmark} from '../imgs/checkmark.svg'
+import {ReactComponent as Pending} from '../imgs/pending.svg'
 import UserCardModal from './UserCardModal'
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { db } from '../firebase/config'
@@ -8,10 +10,13 @@ import { useAuthContext } from "../hooks/useAuthContext"
 import classNames from "classnames"
 import garen from '../garen.png'
 import "../css/components.css";
+import { useCollection } from '../hooks/useCollection'
 
 const UserCard = ({ user, userKey }) =>{
   const [modalShow, setModalShow] = useState(false);
   const { ...state} = useAuthContext()
+  const { documents: users } = useCollection('users')
+
   const handleClick = (e) => {
     e.preventDefault()
     setModalShow(false)
@@ -26,6 +31,32 @@ const UserCard = ({ user, userKey }) =>{
     e.stopPropagation()
   }
 
+  function hasRequested() {
+    let currentUser;
+    if(users) {
+      currentUser = users.filter(user => user.id === state.user.uid)
+      if(currentUser[0].requestedTo) {
+        if(currentUser[0].requestedTo.filter(uid => uid === user.id).length === 1) {
+          return (<div style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
+            <Checkmark className='icon-friend' />
+          </div>)
+        }
+      }
+      if(currentUser[0].receivedBy) {
+        if(currentUser[0].receivedBy.filter(uid => uid === user.id).length === 1) {
+          return (<div style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
+            <Pending className='icon-friend' />
+          </div>)
+        }
+      }
+    }
+    return (
+      <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>
+        <AddFriend className='icon-friend' />
+      </Button>
+    )
+  }
+
   if(user){
     let coach = (user.role === 'Coach')
     let learner = (user.role === 'Learner')
@@ -36,9 +67,7 @@ const UserCard = ({ user, userKey }) =>{
             <Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : garen} alt="Card image" />
             <Card.ImgOverlay>
               <div className='d-flex justify-content-end me-3 mt-3'>
-                <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>
-                  <AddFriend className='icon-friend' />
-                </Button>
+                {hasRequested()}
               </div>
               
               <div className={classNames('information', {coach: coach, learner: learner, teammate: teammate})}>
