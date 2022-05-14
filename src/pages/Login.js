@@ -13,8 +13,11 @@ export default function Login() {
   
   const handleSubmit = (e) => {
     e.preventDefault()
-    login(email,password)
-    history.push('/')
+    login(email,password).then(() =>{
+      if(!error){
+        history.push('/')
+      }
+    })
   }
   
   return (

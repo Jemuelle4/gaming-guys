@@ -12,6 +12,7 @@ const About = () =>{
         console.log(e.target.value)
         setMode(e.target.value)
    }
+
    const component = () => {
        if(mode === 'ingame'){
            return <InGameComponent/>
@@ -25,10 +26,16 @@ const About = () =>{
   return (
     <div style={{marginTop: '100px'}}>
       <Navbar />
-      <button value="ingame" onClick={handleClick}>In Game Information</button>
-      <button value="communication" onClick={handleClick}>Communication</button>
-      <button value="role" onClick={handleClick}>Role / Profile Image</button>
-      {component()}
+      <div style={{display:'flex'}}>
+        <div style={{display:'block'}}>
+            <button style={{display:'block'}} value="ingame" onClick={handleClick}>In Game Information</button>
+            <button style={{display:'block'}} value="communication" onClick={handleClick}>Communication</button>
+            <button style={{display:'block'}} value="role" onClick={handleClick}>Role / Profile Image</button>
+        </div>
+        <div style={{display:'block', width:'50%'}}>
+            {component()}
+        </div>
+      </div>
     </div>
   );
 }
