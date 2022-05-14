@@ -1,16 +1,20 @@
 import React from 'react'
 import { Modal, Row, Col, Card, Button } from 'react-bootstrap'
 import {ReactComponent as AddFriend} from '../imgs/person-add.svg'
+import {ReactComponent as Checkmark} from '../imgs/checkmark.svg'
+import {ReactComponent as Pending} from '../imgs/pending.svg'
 import { doc, updateDoc, arrayUnion } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import classNames from 'classnames'
-import poster from '../poster.png'
+import garen from '../garen.png'
 import "../css/components.css";
+import { useCollection } from '../hooks/useCollection'
 
 function UserCardModal(props) {
 	const user = props.user
 	const userKey = props.userkey
+	const { documents: users } = useCollection('users')
 	let coach = (user.role === 'Coach')
 	let learner = (user.role === 'Learner')
 	let teammate = (user.role === 'Teammate')
@@ -28,18 +32,42 @@ function UserCardModal(props) {
 		})
 	}
 
+	function hasRequested() {
+		let currentUser;
+		if(users) {
+		  currentUser = users.filter(user => user.id === state.user.uid)
+		  if(currentUser[0].requestedTo) {
+			if(currentUser[0].requestedTo.filter(uid => uid === user.id).length === 1) {
+			  return (<div style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
+				<Checkmark className='icon-friend' />
+			  </div>)
+			}
+		  }
+		  if(currentUser[0].receivedBy) {
+			if(currentUser[0].receivedBy.filter(uid => uid === user.id).length === 1) {
+			  return (<div style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
+				<Pending className='icon-friend' />
+			  </div>)
+			}
+		  }
+		}
+		return (
+		  <Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>
+			<AddFriend className='icon-friend' />
+		  </Button>
+		)
+	}
+
 	return (
 		<Modal className='d-flex usercardmodal' {...props} centered>
 			<div className='modalwrap'>
 				<div className='modalcontent'>
 					<Card style={{ width: '20rem', height: '20rem', border:'none'}}>
-						<Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
+						<Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : garen} alt="Card image" />
 						
 						<Card.ImgOverlay>
 							<div className='d-flex justify-content-end me-3 mt-3'>
-								<Button style={{ width: '3rem', height: '3rem'}} className='rounded-circle' onClick={handleClick}>
-									<AddFriend/>
-								</Button>
+								{hasRequested()}
 							</div>
 						
 							<div className={classNames('information', {coach: coach, learner: learner, teammate: teammate})}>
