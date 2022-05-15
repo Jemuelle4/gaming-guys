@@ -2,7 +2,6 @@
   background: #38393d !important;
   padding: 25px;
   margin: 0 0 0 0;
-
 }
 
 .navlink {
@@ -10,8 +9,28 @@
   text-decoration: none;
 }
 
-.navcontainer {
+.dropdown-toggle::after {
+  display: none !important; 
+}
 
+.logoutbutton {
+  background-color: #26C1BA !important;
+  border-color: #26C1BA !important;
+  margin-bottom: 2rem !important;
+}
+
+.inside-dropdown {
+  text-align: center;
+}
+
+.dropdown-menu.show {
+  background-color: #46474C;
+  border: 2px solid #F487B6;
+  padding-bottom: 1rem;
+  vertical-align: middle;
+}
+
+.navcontainer {
   margin: 1rem;
 }
 
