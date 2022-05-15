@@ -6,7 +6,7 @@ const About = () =>{
   return (
     <div style={{marginTop: '100px'}}>
       <Navbar />
-      <h1>About</h1>
+      <h1 className='text-center'>About Us</h1>
       <div >
       <h4 className="about-description" >Hello, We are the Gaming Guys! 
         This is a capstone project for the iSchool at the University of Washington. 
