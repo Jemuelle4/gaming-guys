@@ -58,6 +58,22 @@ function UserCardModal(props) {
 		)
 	}
 
+	function strengths() {
+		if(user.strengths) {
+			return(user.strengths.map(strength => {
+				return <li>{strength}</li>
+			}))
+		}
+	}
+
+	function weaknesses() {
+		if(user.weaknesses) {
+			return(user.weaknesses.map(weakness => {
+				return <li>{weakness}</li>
+			}))
+		}
+	}
+
 	return (
 		<Modal className='d-flex usercardmodal' {...props} centered>
 			<div className='modalwrap'>
@@ -107,12 +123,11 @@ function UserCardModal(props) {
 					<div className='extracontent'>
 						<h3>Strengths</h3>
 						<ul className='strength'>
-							<li>Strength 1</li>
-							<li>Strength 2</li>
+							{strengths()}
 						</ul>
 						<h3>Weaknesses</h3>
 						<ul className='weakness'>
-							<li>Weakness 1</li>
+							{weaknesses()}
 						</ul>
 						<h3>Communication Platforms</h3>
 					</div>
