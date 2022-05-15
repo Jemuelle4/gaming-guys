@@ -14,20 +14,60 @@ const SelectedConnection = ({user, currentUserID}) => {
 		let learner = (user.role === 'Learner')
 		let teammate = (user.role === 'Teammate')
 
+		function strengths() {
+			if(user.strengths) {
+				return(user.strengths.map(strength => {
+					return <li>{strength}</li>
+				}))
+			}
+		}
+	
+		function weaknesses() {
+			if(user.weaknesses) {
+				return(user.weaknesses.map(weakness => {
+					return <li>{weakness}</li>
+				}))
+			}
+		}
+
+		function discord() {
+			if(user.discord) {
+				return <p>Discord: {user.discord}</p>
+			}
+		}
+		function instagram() {
+			if(user.instagram) {
+				return <p>Instagram: {user.instagram}</p>
+			}
+		}
+		function snapchat() {
+			if(user.snapchat) {
+				return <p>Snapchat: {user.snapchat}</p>
+			}
+		}
+		function telegram() {
+			if(user.telegram) {
+				return <p>Telegram: {user.telegram}</p>
+			}
+		}
+
 		let bottomContent;
 		if(info) {
 			bottomContent =
 				<div className='extracontent'>
 					<h3>Strengths</h3>
 					<ul className='strength'>
-						<li>Strength 1</li>
-						<li>Strength 2</li>
+						{strengths()}
 					</ul>
 					<h3>Weaknesses</h3>
 					<ul className='weakness'>
-						<li>Weakness 1</li>
+						{weaknesses()}
 					</ul>
 					<h3>Communication Platforms</h3>
+					{discord()}
+					{instagram()}
+					{snapchat()}
+					{telegram()}
 				</div>
 		}
 		if(goals) {
