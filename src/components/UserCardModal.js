@@ -76,22 +76,22 @@ function UserCardModal(props) {
 
 	function discord() {
 		if(user.discord) {
-			return <p>Discord: {user.discord}</p>
+			return <p>Using Discord</p>
 		}
 	}
 	function instagram() {
 		if(user.instagram) {
-			return <p>Instagram: {user.instagram}</p>
+			return <p>Using Instagram</p>
 		}
 	}
 	function snapchat() {
 		if(user.snapchat) {
-			return <p>Snapchat: {user.snapchat}</p>
+			return <p>Using Snapchat</p>
 		}
 	}
 	function telegram() {
 		if(user.telegram) {
-			return <p>Telegram: {user.telegram}</p>
+			return <p>Using Telegram</p>
 		}
 	}
 

@@ -69,7 +69,7 @@ const Goals = ({selectedUser, currentUserID}) => {
 				<Form onSubmit={onFormSubmit}>
 					<Form.Group className='d-flex'>
 						<Form.Control type="text" placeholder="Add a goal" value={newGoal} onChange={e => setNewGoal(e.target.value)}/>
-						<Button className='mx-2' type='submit'>Submit</Button>
+						<Button style={{backgroundColor: '#26C1BA', borderColor: '#26C1BA'}} className='mx-2' type='submit'>Submit</Button>
 					</Form.Group>
 					<div >
 						<h4>Current Goals</h4>
@@ -86,11 +86,11 @@ const Goals = ({selectedUser, currentUserID}) => {
 		)
 	} else {
 		return (
-			<div>
+			<div className='mt-2'>
 				<Form onSubmit={onFormSubmit}>
 					<Form.Group className='d-flex'>
 						<Form.Control type="text" placeholder="Add a goal" value={newGoal} onChange={e => setNewGoal(e.target.value)}/>
-						<Button className='mx-2' type='submit'>Submit</Button>
+						<Button style={{backgroundColor: '#26C1BA', borderColor: '#26C1BA'}} className='mx-2' type='submit'>Submit</Button>
 					</Form.Group>
 					<h3>Add some goals to get started!</h3>
 				</Form>

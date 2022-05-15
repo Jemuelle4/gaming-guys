@@ -42,7 +42,7 @@ const Connections = ({uid}) =>{
   }
 
   function mapConnectionRequests(receivedBy) {
-    if(receivedBy) {
+    if( receivedBy && receivedBy.length >= 1) {
       return (
         <Col className='col-12 col-md-3'>
           <h1>Connection Requests</h1>
@@ -62,7 +62,7 @@ const Connections = ({uid}) =>{
   }
 
   function mapConnections(connections) {
-    if(connections) {
+    if(connections && connections.length >= 1) {
       return connections.map((connectionID) => {
         return <AcceptedConnection uid={connectionID} setSelectedUser={setSelectedUser}/>
       })

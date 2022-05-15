@@ -127,6 +127,8 @@ const SelectedConnection = ({user, currentUserID}) => {
 				</div>
 			</div>
 		)
+	} else {
+		return <h2>Select a connection to view info and add goals!</h2>
 	}
 }
 

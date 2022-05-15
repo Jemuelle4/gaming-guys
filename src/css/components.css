@@ -119,6 +119,11 @@ div.card-img-overlay{
   border-bottom: 2px solid #26C1BA !important;
 }
 
+h2 {
+  color: white !important;
+  text-align: center;
+}
+
 /*****Requested Connections*****/
 .request-connection {
   display: flex;
