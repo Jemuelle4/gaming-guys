@@ -8,7 +8,6 @@ import "../css/components.css";
 const SelectedConnection = ({user, currentUserID}) => {
 	const [info, setInfo] = useState(true)
 	const [goals, setGoals] = useState(false)
-	const [design, setDesign] = useState()
 
 	if(user) {
 		let coach = (user.role === 'Coach')
