@@ -1,14 +1,13 @@
 import React from 'react';
-import { useState, Link } from 'react';
-import { Navbar, Nav, Button, Image } from 'react-bootstrap'
+import { useState } from 'react';
+import { Navbar, Nav, Button, Image, NavDropdown } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from "../hooks/useAuthContext"
 import { db } from '../firebase/config'
 import { doc, getDoc} from 'firebase/firestore'
 import "../css/navbar.css";
-
-
+import garen from '../garen.png'
 
 export default function GuddyNavbar(){
   const { logout } = useLogout()
@@ -37,11 +36,16 @@ export default function GuddyNavbar(){
           </div>
           <div className='navcontainer'><NavLink className='navlink' exact to='/connections' activeClassName="active">Connections</NavLink></div>
           <div className='navcontainer'><NavLink className='navlink' exact to='/about' activeClassName="active">About</NavLink></div>
-          <Button className='logoutbutton my-auto' onClick={logout}>Log Out</Button>
         </Nav>
       </Navbar.Collapse>
       <Nav>
-        <Image roundedCircle src={imgUrl} alt="user profile" style={{width: '5vh', height: '5vh', objectFit: 'cover'}}/>
+        <NavDropdown align={'end'}
+        title={<Image roundedCircle src={imgUrl? imgUrl : garen} alt="user profile" style={{width: '5vh', height: '5vh', objectFit: 'cover'}}/>}>
+          <div className='inside-dropdown'>
+            <div className='navcontainer'><NavLink className='navlink' exact to='/profile' activeClassName="active">Edit Profile</NavLink></div>
+            <Button className='logoutbutton my-auto' onClick={logout}>Log Out</Button>
+          </div>
+        </NavDropdown>
       </Nav>
     </Navbar>
   );
