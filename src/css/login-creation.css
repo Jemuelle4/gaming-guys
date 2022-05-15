@@ -19,6 +19,7 @@ div.poster-container{
 div.login-container {
   flex:1;
   background-color: #46474C;
+  background-color: #d0d0d0;
   color: white;
   display: flex;
   flex-direction: column;
@@ -270,7 +271,6 @@ label {
     background-size: cover;
     box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.674);
     padding: 5%;
-    
     align-items: center;
     flex-direction: column;
   }
