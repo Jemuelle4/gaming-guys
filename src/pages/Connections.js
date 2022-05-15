@@ -7,6 +7,7 @@ import { doc, updateDoc, arrayUnion, arrayRemove } from 'firebase/firestore'
 import { db } from '../firebase/config'
 import { useAuthContext } from "../hooks/useAuthContext"
 import AcceptedConnection from '../components/AcceptedConnection'
+import "../css/components.css";
 
 const Connections = ({uid}) =>{
   const { documents: users } = useCollection('users')
@@ -42,17 +43,21 @@ const Connections = ({uid}) =>{
 
   function mapConnectionRequests(receivedBy) {
     if(receivedBy) {
-      return (receivedBy.map((receivedID) => {
-        let receivedUser = users.find(user => user.id === receivedID)
-        return (
-          <Col className='col-12 col-md-3'>
-            <h1>Connection Requests</h1>
-            <CardGroup>
-              {getConnection(receivedUser)}
-            </CardGroup>
-          </Col>
-        )
-      }))
+      return (
+        <Col className='col-12 col-md-3'>
+          <h1>Connection Requests</h1>
+          <CardGroup>
+            {receivedBy.map((receivedID) => {
+              let receivedUser = users.find(user => user.id === receivedID)
+              return (
+                <Row className='m-0'>
+                  {getConnection(receivedUser)}
+                </Row>
+              )
+            })}
+          </CardGroup>
+        </Col>
+      )
     }
   }
 
@@ -62,21 +67,35 @@ const Connections = ({uid}) =>{
         return <AcceptedConnection uid={connectionID} setSelectedUser={setSelectedUser}/>
       })
     } else {
-      return <h4>No connections! Accept some requests or go send requests to make new connections!</h4>
+      return <h4>No connections! Go send requests to make new connections!</h4>
     }
   }
   
   function getConnection(user) {
     if(user) {
       return(
-          <Card className='bg-dark'>
-            <Row>
-              <Col><Card.Title>{user.displayName}</Card.Title></Col>
-              <Col><Card.Body>{user.rank}/{user.role}</Card.Body></Col>
-              <Col><Button variant='success' onClick={e => handleAccept(e, user.id)}>Accept</Button></Col>
-              <Col><Button variant='danger' onClick={e => handleDecline(e, user.id)}>Decline</Button></Col>
-            </Row>
-          </Card>
+        <Card className='request-connection m-1'>
+          <Row className='m-1'>
+            <Col>
+              <Card.Title className='title'>{user.displayName}</Card.Title>
+              <Card.Text className='text'>{user.role}</Card.Text>
+            </Col>
+            <Col>
+              {getEmblem(user.rank)}
+              <Card.Text className='text'>{user.rank}</Card.Text>
+            </Col>
+            <Col>
+              {getRoleIcon(user.rank, user.fav_role[0])}
+              <Card.Text className='text'>{user.fav_role[0]}</Card.Text>
+            </Col>
+            <Col>
+              {getRoleIcon(user.rank, user.fav_role[1])}
+              <Card.Text className='text'>{user.fav_role[1]}</Card.Text>
+            </Col >
+            <Col className='col-2 btn-container'><Button className='accept' onClick={e => handleAccept(e, user.id)}>Accept</Button></Col>
+            <Col className='col-2 btn-container'><Button className='decline' onClick={e => handleDecline(e, user.id)}>Decline</Button></Col>
+          </Row>
+        </Card>
       )
     }
   }
@@ -86,7 +105,7 @@ const Connections = ({uid}) =>{
     return (
       <div style={{marginTop: '100px'}}>
         <Navbar/>
-        <Row className='m-0'>
+        <Row className='m-1'>
           {mapConnectionRequests(currentUser.receivedBy)}
           <Col xs>
             <h1>Connections</h1>
@@ -102,4 +121,13 @@ const Connections = ({uid}) =>{
     );
   }
 }
+
+function getEmblem(rank) {
+  return <img className='icons' src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + 'Icon'}/>
+}
+
+function getRoleIcon(rank, role) {
+  return <img className='icons' src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/>
+}
+
 export default Connections;

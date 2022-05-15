@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, Link } from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap'
+import { Navbar, Nav, Button, Image } from 'react-bootstrap'
 import { NavLink } from 'react-router-dom'
 import { useLogout } from '../hooks/useLogout'
 import { useAuthContext } from "../hooks/useAuthContext"
@@ -41,10 +41,7 @@ export default function GuddyNavbar(){
         </Nav>
       </Navbar.Collapse>
       <Nav>
-        <div className='navcontainer'><h5>Hello User</h5></div>
-        <Button className='navcontainer profilebutton my-auto rounded-circle'>
-          <img className='rounded-circle' src={imgUrl} alt="user profile" style={{width: '5vh', height: '5vh', objectFit: 'cover'}}></img>
-        </Button>
+        <Image roundedCircle src={imgUrl} alt="user profile" style={{width: '5vh', height: '5vh', objectFit: 'cover'}}/>
       </Nav>
     </Navbar>
   );

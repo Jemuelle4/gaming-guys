@@ -119,6 +119,53 @@ div.card-img-overlay{
   border-bottom: 2px solid #26C1BA !important;
 }
 
+/*****Requested Connections*****/
+.request-connection {
+  display: flex;
+  padding: 1rem;
+  background-color: #46474C !important;
+  border: 2px solid #26C1BA !important;
+}
+
+.request-connection .title {
+  font-size: small !important;
+  text-align: center;
+}
+
+.request-connection .text {
+  font-size: x-small !important;
+  text-align: center;
+}
+
+.request-connection Button {
+  font-size: x-small;
+  height: min-content;
+}
+
+.request-connection .btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.request-connection img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.accept {
+  background-color: #46474C !important;
+  border: 2px solid #26C1BA !important;
+}
+
+.decline {
+  background-color: #46474C !important;
+  border: 2px solid #F487B6 !important;
+}
+
 @media (max-width: 576px){
   .modalwrap {
     position: absolute;
