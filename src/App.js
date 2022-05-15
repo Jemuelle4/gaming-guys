@@ -56,7 +56,7 @@ function App() {
               </Route>
               <Route path="/profile">
                 {!user && <LandingPage/>}
-                {user && <UserProfile/>}
+                {user && <UserProfile uid ={user.uid}/>}
               </Route>
           </Switch>
         </BrowserRouter>
