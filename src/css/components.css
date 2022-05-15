@@ -42,7 +42,11 @@ div.card-img-overlay{
 .icon-friend{
   height: 1.5rem;
   width: 1.5rem;
-  
+}
+
+.checkmark, .pending {
+  background-color: #46474C !important;
+  border-color: #46474C !important;
 }
 
 .rounded-circle{

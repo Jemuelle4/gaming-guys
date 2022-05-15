@@ -38,16 +38,16 @@ function UserCardModal(props) {
 		  currentUser = users.filter(user => user.id === state.user.uid)
 		  if(currentUser[0].requestedTo) {
 			if(currentUser[0].requestedTo.filter(uid => uid === user.id).length === 1) {
-			  return (<div style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
-				<Checkmark className='icon-friend' />
-			  </div>)
+			  return (<Button style={{ width: '3rem', height: '3rem', cursor: 'default'}} className='rounded-circle checkmark'>
+			  <Checkmark className='icon-friend' />
+			</Button>)
 			}
 		  }
 		  if(currentUser[0].receivedBy) {
 			if(currentUser[0].receivedBy.filter(uid => uid === user.id).length === 1) {
-			  return (<div style={{ width: '3rem', height: '3rem'}} className='rounded-circle'>
-				<Pending className='icon-friend' />
-			  </div>)
+			  return (<Button style={{ width: '3rem', height: '3rem', cursor: 'default'}} className='rounded-circle pending'>
+			  <Pending className='icon-friend' />
+			</Button>)
 			}
 		  }
 		}
