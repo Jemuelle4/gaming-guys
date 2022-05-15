@@ -30,6 +30,27 @@ const SelectedConnection = ({user, currentUserID}) => {
 			}
 		}
 
+		function discord() {
+			if(user.discord) {
+				return <p>Discord: {user.discord}</p>
+			}
+		}
+		function instagram() {
+			if(user.instagram) {
+				return <p>Instagram: {user.instagram}</p>
+			}
+		}
+		function snapchat() {
+			if(user.snapchat) {
+				return <p>Snapchat: {user.snapchat}</p>
+			}
+		}
+		function telegram() {
+			if(user.telegram) {
+				return <p>Telegram: {user.telegram}</p>
+			}
+		}
+
 		let bottomContent;
 		if(info) {
 			bottomContent =
@@ -43,6 +64,10 @@ const SelectedConnection = ({user, currentUserID}) => {
 						{weaknesses()}
 					</ul>
 					<h3>Communication Platforms</h3>
+					{discord()}
+					{instagram()}
+					{snapchat()}
+					{telegram()}
 				</div>
 		}
 		if(goals) {
