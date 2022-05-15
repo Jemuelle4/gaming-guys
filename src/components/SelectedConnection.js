@@ -78,10 +78,10 @@ const SelectedConnection = ({user, currentUserID}) => {
 					</Card.ImgOverlay>
 				</Card>
 				<div>
-					<Button className={`${!design ? "design" : ""} button-connections`} 
-						onClick={() => {setInfo(true); setGoals(false); setDesign(!design)}}>Information</Button>
-					<Button className={`${design ? "design" : ""} button-connections`} 
-						onClick={() => {setInfo(false); setGoals(true); setDesign(!design)}}>Goals</Button>
+					<Button className={`${info ? "design" : ""} button-connections`} 
+						onClick={() => {setInfo(true); setGoals(false)}}>Information</Button>
+					<Button className={`${goals ? "design" : ""} button-connections`} 
+						onClick={() => {setInfo(false); setGoals(true)}}>Goals</Button>
 				</div>
 				<div>
 					{bottomContent}
