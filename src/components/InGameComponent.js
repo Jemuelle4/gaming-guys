@@ -171,7 +171,7 @@ export default function InGameComponent(props) {
                 <option key="Platinum">Platinum</option>
                 <option key="Diamond">Diamond</option>
                 <option key="Master">Master</option>
-                <option key="GrandMaster">GrandMaster</option>
+                <option key="Grandmaster">GrandMaster</option>
                 <option key="Challenger">Challenger</option>
               </select>
             </div> 
