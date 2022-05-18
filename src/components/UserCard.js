@@ -57,7 +57,7 @@ const UserCard = ({ user, userKey }) =>{
     )
   }
 
-  if(user){
+  if(user && user.rank && user.role && user.fav_role){
     let coach = (user.role === 'Coach')
     let learner = (user.role === 'Learner')
     let teammate = (user.role === 'Teammate')
