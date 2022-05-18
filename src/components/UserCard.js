@@ -113,11 +113,11 @@ const UserCard = ({ user, userKey }) =>{
 }
 
 function getEmblem(rank) {
-  return (rank && <img className='icons' src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + 'Icon'}/>)
+  return <img className='icons' src={require('../imgs/ranked-emblems/Emblem_' + rank + '.png')} alt={rank + 'Icon'}/>
 }
 
 function getRoleIcon(rank, role) {
-  return (rank && role ? <img className='icons' src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/> : '')
+  return <img className='icons' src={require('../imgs/ranked-positions/Position_' + rank +'-' + role + '.png')} alt={role + 'Icon'}/>
 }
 
 export default UserCard;
