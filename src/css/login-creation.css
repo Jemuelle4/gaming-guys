@@ -122,6 +122,18 @@ div.role-button-container img{
   border-radius: 50%;
   cursor: pointer;  
 }
+
+div.edit-role-button-container img{
+  flex:1;
+  background-color: #04AA6D;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  width: 325px;
+  height: 325px;
+  border-radius: 50%;
+  cursor: pointer;  
+}
 button.role-button{
   flex:1;
   font-size: 2.5rem;
@@ -334,7 +346,7 @@ label {
   div.role-button-container img{
     font-size: 2.5rem;
     width: 375px;
-    height: 375px;
+    min-height: 375px;
   
   }
 
@@ -344,7 +356,7 @@ label {
     min-height: 275px;
   }
 
-  div.edit-role-button-container button{
+  div.edit-role-button-container button.role-button{
     font-size: 2.0rem;
     width: 275px;
     min-height: 275px;
@@ -355,6 +367,7 @@ label {
     width: 375px;
     min-height: 375px;
   }
+
 
 }
 

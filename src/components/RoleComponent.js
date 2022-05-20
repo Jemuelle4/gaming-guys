@@ -95,9 +95,9 @@ export default function Role(props) {
                 onChange={handleChange}/>
               </div>
 
-              <div className="button-container">
+              <div className={`${props.mode==="page" ? "button-container" : 'edit-button-container'}`}>
                 {preview && clicked['Learner']? (
-                  <img alt="preview" src={preview}/>
+                  <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
                   ) : (
                   <button className="role-button learner" value="Learner" onClick={handleClick}>Learner</button>
                   )}
@@ -106,7 +106,7 @@ export default function Role(props) {
                 onChange={handleChange}/>
               </div>
 
-              <div className="button-container">
+              <div className={`${props.mode==="page" ? "button-container" : 'edit-button-container'}`}>
                 {preview && clicked['Teammate'] ? (
                   <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
                   ) : (
