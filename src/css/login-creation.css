@@ -218,7 +218,7 @@ label {
   width: 300px;
   height: 80px;
   border: 0;
-  
+
   border-radius: 10px;
   font-size: 1.2rem;
 }
@@ -337,6 +337,19 @@ label {
     height: 375px;
   
   }
+
+  div.edit-button-container img{
+    font-size: 2.0rem;
+    width: 275px;
+    min-height: 275px;
+  }
+
+  div.edit-role-button-container button{
+    font-size: 2.0rem;
+    width: 275px;
+    min-height: 275px;
+  }
+  
   button.role-button{
     font-size: 3rem;
     width: 375px;
