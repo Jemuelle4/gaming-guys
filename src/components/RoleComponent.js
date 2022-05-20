@@ -73,22 +73,22 @@ export default function Role(props) {
     })
     history.push('/')
   }
-
+  //style={{['background-image']: 'none'}}
   return (
-    <div className="role-container">
+    <div className="role-container"> 
       <div className="role-header">
         <h2>You are a...</h2>
       </div>
       
       <div>
       <form onSubmit={handleSubmit}>
-            <div className="role-button-container">
+            <div className={`${props.mode==="page" ? "role-button-container" : ''}`}>
 
               <div className="button-container">
                 {preview && clicked['Coach']? (
                 <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
                 ) : (
-                <button className="role-button coach" value="Coach" onClick={handleClick}>Coach</button>
+                <button style={{}} className="role-button coach" value="Coach" onClick={handleClick}>Coach</button>
                 )}
                 {clicked['Coach'] && <button onClick={handleImage}className="role-picture">Add Profile Image</button>}
                 <input type="file" style={{display: "none"}} ref={fileInputRef} accept="image/*"
