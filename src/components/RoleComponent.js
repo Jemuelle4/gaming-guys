@@ -61,6 +61,7 @@ export default function Role(props) {
     e.preventDefault()
     const userRef = doc(db, "users", state.user.uid)
     const fileRef = ref(storage, state.user.uid + '.png')
+    console.log(fileRef)
     uploadBytes(fileRef, image).then(() =>{
       getDownloadURL(fileRef).then((url) =>{
         updateDoc(userRef,{
@@ -82,7 +83,7 @@ export default function Role(props) {
         {props.mode==="page" ? <h2>You are a...</h2> : ''}
       </div>
       <div>
-      <form onSubmit={handleSubmit}>
+      <form id='role-form' onSubmit={handleSubmit}>
             <div className={`${props.mode==="page" ? "role-button-container" : 'edit-role-button-container'}`}>
               <div className={`${props.mode==="page" ? "button-container" : 'edit-button-container'}`}>
                 {preview && clicked['Coach']? (
@@ -123,7 +124,7 @@ export default function Role(props) {
             </div>
             ):(
             <div id="creation-button">
-                <button form='ingame-form' className="button button-primary form-margin" 
+                <button form='role-form' className="button button-primary form-margin" 
                 type="submit">Edit Profile</button>
             </div>
             )}
