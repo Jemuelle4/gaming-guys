@@ -70,7 +70,7 @@ export default function InGameComponent(props) {
 
   const getChampionName = async () => {
     try {
-      let response = await fetch('http://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion.json');
+      let response = await fetch('https://ddragon.leagueoflegends.com/cdn/12.6.1/data/en_US/champion.json');
       let responseJson = await response.json();
       const champArray = Object.keys(responseJson.data)
       setChampData(champArray)
@@ -143,7 +143,7 @@ export default function InGameComponent(props) {
     <div className="flex-container">
       {props.mode === "page"? (
       <div className='poster-container'>
-        <img src={poster} alt="poster"></img>
+        <img src={poster} alt="poster"></img> 
       </div>
       ):('')}
       <div className='login-container'>
