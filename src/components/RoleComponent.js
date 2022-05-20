@@ -71,7 +71,9 @@ export default function Role(props) {
       console.log(e.message)
     })
     })
-    history.push('/')
+    if(props.mode == 'page'){
+      history.push('/')
+   }
   }
   //style={{['background-image']: 'none'}}
   return (

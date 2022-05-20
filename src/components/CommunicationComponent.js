@@ -29,7 +29,9 @@ export default function Communication(props) {
        telegram: telegram,
        aboutYou: aboutYou
     })
-    history.push('/role')
+    if(props.mode == 'page'){
+      history.push('/role')
+   }
   }
   
   return (

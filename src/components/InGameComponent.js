@@ -113,6 +113,7 @@ export default function InGameComponent(props) {
   }
 
   const handleRank = (e) => {
+    console.log(e.target.value)
     setRank(e.target.value)
   }
 
@@ -133,7 +134,9 @@ export default function InGameComponent(props) {
         strengths: strengthValues, 
         weaknesses: weaknessValues
      })
-     history.push('/communication')
+     if(props.mode == 'page'){
+        history.push('/communication')
+     }
     } catch(err) {
       alert("Check if you have entered everything")
       console.log(err)
@@ -171,7 +174,7 @@ export default function InGameComponent(props) {
                 <option key="Platinum">Platinum</option>
                 <option key="Diamond">Diamond</option>
                 <option key="Master">Master</option>
-                <option key="Grandmaster">GrandMaster</option>
+                <option key="Grandmaster">Grandmaster</option>
                 <option key="Challenger">Challenger</option>
               </select>
             </div> 
