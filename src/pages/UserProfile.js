@@ -53,22 +53,22 @@ const About = ({uid}) =>{
 
 	function discord() {
 		if(user.discord) {
-			return <p>Using Discord</p>
+			return <p>Discord: {user.discord}</p>
 		}
 	}
 	function instagram() {
 		if(user.instagram) {
-			return <p>Using Instagram</p>
+			return <p>Instagram: {user.instagram}</p>
 		}
 	}
 	function snapchat() {
 		if(user.snapchat) {
-			return <p>Using Snapchat</p>
+			return <p>Snapchat: {user.snapchat}</p>
 		}
 	}
 	function telegram() {
 		if(user.telegram) {
-			return <p>Using Telegram</p>
+			return <p>Telegram: {user.telegram}</p>
 		}
 	}
   if(user) {
@@ -90,7 +90,7 @@ const About = ({uid}) =>{
             <Card style={{ width: '20rem', height: '20rem', border:'none'}}>
               <Card.Img style={{ width: '20rem', height: '20rem'}} src={user.imgSrc? user.imgSrc : poster} alt="Card image" />
               <Card.ImgOverlay>						
-                <div className={classNames('information', {coach: coach, learner: learner, teammate: teammate})}>
+                <div className={classNames('information', 'mt-auto', {coach: coach, learner: learner, teammate: teammate})}>
                 <Row className='mb-2 g-0'>
                     <Col xs={6}>
                       <Card.Title className='ms-3'>{user.displayName}</Card.Title>
