@@ -75,16 +75,14 @@ export default function Role(props) {
   }
   //style={{['background-image']: 'none'}}
   return (
-    <div className="role-container"> 
+    <div className={`${props.mode==="page" ? "role-container" : 'edit-role-container'}`}> 
       <div className="role-header">
-        <h2>You are a...</h2>
+        {props.mode==="page" ? <h2>You are a...</h2> : ''}
       </div>
-      
       <div>
       <form onSubmit={handleSubmit}>
-            <div className={`${props.mode==="page" ? "role-button-container" : ''}`}>
-
-              <div className="button-container">
+            <div className={`${props.mode==="page" ? "role-button-container" : 'edit-role-button-container'}`}>
+              <div className={`${props.mode==="page" ? "button-container" : 'edit-button-container'}`}>
                 {preview && clicked['Coach']? (
                 <img alt="preview" src={preview} style={{objectFit: 'cover'}}/>
                 ) : (

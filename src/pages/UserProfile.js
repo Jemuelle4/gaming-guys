@@ -35,19 +35,55 @@ const About = ({uid}) =>{
   if(users) {
     user = users.find(user => user.id === uid)
   }
+  function strengths() {
+		if(user.strengths) {
+			return(user.strengths.map(strength => {
+				return <li>{strength}</li>
+			}))
+		}
+	}
+
+	function weaknesses() {
+		if(user.weaknesses) {
+			return(user.weaknesses.map(weakness => {
+				return <li>{weakness}</li>
+			}))
+		}
+	}
+
+	function discord() {
+		if(user.discord) {
+			return <p>Using Discord</p>
+		}
+	}
+	function instagram() {
+		if(user.instagram) {
+			return <p>Using Instagram</p>
+		}
+	}
+	function snapchat() {
+		if(user.snapchat) {
+			return <p>Using Snapchat</p>
+		}
+	}
+	function telegram() {
+		if(user.telegram) {
+			return <p>Using Telegram</p>
+		}
+	}
   if(user) {
     let coach = (user.role === 'Coach')
     let learner = (user.role === 'Learner')
     let teammate = (user.role === 'Teammate')
 
     return (
-      <div style={{marginTop: '100px'}}>
+      <div style={{marginTop: '5rem'}}>
         <Navbar />
         <div style={{display: 'flex'}}>
-          <div style={{display:'block', position:'absolute'}}>
-            <button style={{display:'block'}} className="button button-primary form-margin mb-3"  value="ingame" onClick={handleClick}>In Game Information</button>
-            <button style={{display:'block'}} className="button button-primary form-margin mb-3"  value="communication" onClick={handleClick}>Communication</button>
-            <button style={{display:'block'}} className="button button-primary form-margin mb-3"  value="role" onClick={handleClick}>Role / Profile Image</button>
+          <div style={{display:'inline-block'}}>
+            <button style={{display:'block', ['background-color']: '#38393d'}} className="edit-button button-primary form-margin mb-3"  value="ingame" onClick={handleClick}>In Game Information</button>
+            <button style={{display:'block', ['background-color']: '#38393d'}} className="edit-button button-primary form-margin mb-3"  value="communication" onClick={handleClick}>Communication</button>
+            <button style={{display:'block', ['background-color']: '#38393d'}} className="edit-button button-primary form-margin mb-3"  value="role" onClick={handleClick}>Role / Profile Image</button>
           </div>
           {component()}
           <div>
@@ -89,17 +125,20 @@ const About = ({uid}) =>{
               </Card.ImgOverlay>
             </Card>
             <div className='extracontent'>
-              <h3>Strengths</h3>
-              <ul className='strength'>
-                <li>Strength 1</li>
-                <li>Strength 2</li>
-              </ul>
-              <h3>Weaknesses</h3>
-              <ul className='weakness'>
-                <li>Weakness 1</li>
-              </ul>
-              <h3>Communication Platforms</h3>
-            </div>
+						<h3>Strengths</h3>
+						<ul className='strength'>
+							{strengths()}
+						</ul>
+						<h3>Weaknesses</h3>
+						<ul className='weakness'>
+							{weaknesses()}
+						</ul>
+						<h3>Communication Platforms</h3>
+						{discord()}
+						{instagram()}
+						{snapchat()}
+						{telegram()}
+					</div>
           </div>
         </div>
       </div>

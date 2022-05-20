@@ -55,6 +55,15 @@ div.role-container{
   flex-direction: column;
 }
 
+div.edit-role-container{
+  display:flex;
+  height: auto;
+  width: 80vw;
+  max-width: 100vw;
+  align-items: center;
+  flex-direction: column;
+}
+
 div.role-header{
   margin-bottom: 50px;
 }
@@ -67,6 +76,22 @@ div.role-button-container{
   width: 100vw;
   flex-wrap: wrap;
  
+}
+
+div.edit-role-button-container{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  flex-wrap: wrap;
+ 
+}
+
+div.edit-button-container{
+  display: flex;
+  flex-direction: column;
+  align-items: space-around;
+  padding: 25px 25px;
 }
 
 div.role-picture{
@@ -187,7 +212,15 @@ label {
   margin-bottom: 20px;
   border-radius: 10px;
   font-size: 1.2rem;
+}
+
+.edit-button {
+  width: 300px;
+  height: 80px;
+  border: 0;
   
+  border-radius: 10px;
+  font-size: 1.2rem;
 }
 
 .button-primary {
