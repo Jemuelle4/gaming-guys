@@ -27,10 +27,10 @@ const About = () =>{
     <div style={{marginTop: '100px'}}>
       <Navbar />
       <div>
-        <div style={{display:'block'}}>
-            <button className="button button-primary form-margin mb-3"  value="ingame" onClick={handleClick}>In Game Information</button>
-            <button className="button button-primary form-margin mb-3"  value="communication" onClick={handleClick}>Communication</button>
-            <button className="button button-primary form-margin mb-3"  value="role" onClick={handleClick}>Role / Profile Image</button>
+        <div style={{display:'block', position:'absolute'}}>
+            <button style={{display:'block'}} className="button button-primary form-margin mb-3"  value="ingame" onClick={handleClick}>In Game Information</button>
+            <button style={{display:'block'}} className="button button-primary form-margin mb-3"  value="communication" onClick={handleClick}>Communication</button>
+            <button style={{display:'block'}} className="button button-primary form-margin mb-3"  value="role" onClick={handleClick}>Role / Profile Image</button>
         </div>
         <div style={{display:'block', width:'50%'}}>
             {component()}
