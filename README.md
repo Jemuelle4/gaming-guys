@@ -31,5 +31,6 @@ To minimize abuse and harassment within the app, implement a rating system where
 ### Implement system to encourage players to be a guide/mentor
 What's in it for people to teach other players? Brainstorm ways to motivate users to be guide/mentor.
 
-### Expand app to serve different competetive multiplayer games such as Dota, Fortnite, Heroes of the Storm.
+### Expand app to serve different competetive multiplayer games such as Dota, Fortnite, Heroes of the Storm
+With the expansion to different games, the sign up fields will have to change to accomodate different games. Players who shows up on the main page should also only show others who play the same games as the users (automatically). 
 
