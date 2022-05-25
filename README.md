@@ -1,4 +1,4 @@
-# gaming-guys
+# Guddy
 Capstone project for the University of Washington - Informatics. Developed and created by the group: Gaming Guys which consists of Ha Nguyen, Kellen Maier, Ethan Oh, and Sam Jemuelle Quiambao.
 
 For any questions, please email Sam at samq2@uw.edu who is the Project Manager. 
@@ -28,6 +28,8 @@ Once two users connect, allow a chat function to be used between the two. Minimu
 ### Implement rating system and/or report feature
 To minimize abuse and harassment within the app, implement a rating system where users can rate interactions between other people. A report feature will also be a good feature to add, where the team will review the chat (if implemented) on a case by case basis. Please be aware of certain biases and problems a rating system will have. Targetted reviews towards certain gender, race, and identities can be coordinated and provide harassment. Do more research how this implementation can reduce biases. 
 
-### Implement System To Encourage Players To Be A Guide/Mentor
+### Implement system to encourage players to be a guide/mentor
 What's in it for people to teach other players? Brainstorm ways to motivate users to be guide/mentor.
+
+### Expand app to serve different competetive multiplayer games such as Dota, Fortnite, Heroes of the Storm.
 
