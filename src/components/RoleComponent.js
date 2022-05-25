@@ -57,12 +57,16 @@ export default function Role(props) {
       setClicked(dict)
   }
 
+  const metadata = {
+    contentType: 'image/jpeg'
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     const userRef = doc(db, "users", state.user.uid)
     const fileRef = ref(storage, state.user.uid + '.png')
     console.log(fileRef)
-    uploadBytes(fileRef, image).then(() =>{
+    uploadBytes(fileRef, image, metadata).then(() =>{
       getDownloadURL(fileRef).then((url) =>{
         updateDoc(userRef,{
           role: role,
